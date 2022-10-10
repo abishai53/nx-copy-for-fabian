@@ -1,1 +1,16 @@
-<div> It Works </div>
+<div id="entire-page">
+
+    <div class="black-background">
+        <ptf-header  [currentPage]="currentPage"></ptf-header>
+    </div>
+
+    <div class="white-background">
+        <router-outlet (activate)="getCurrentPage($event)"></router-outlet>
+    </div>
+
+    <div class="black-background">
+        <ptf-footer></ptf-footer>
+    </div>
+
+</div>
+

@@ -7,12 +7,16 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true,
+          "standalone": false,
+          "prefix": "ptf",
+          "export": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "ptf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -28,7 +32,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/vela-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           },
@@ -114,7 +121,7 @@
     }
   },
   "cli": {
-    "analytics": "0727084f-d5ac-4e6b-bee9-6c35ae06d779",
+    "analytics": "2e9d38dd-144c-497a-8e9a-a12eb6a7cacc",
     "schematicCollections": [
       "@angular-eslint/schematics"
     ]

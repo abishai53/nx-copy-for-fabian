@@ -1,0 +1,37 @@
+<div class="standard-padding thick-white-border">
+
+    <div id="top-bar">
+        <div id="top-bar-content" class="flex-row bold faint-white-text">
+
+            <div id="user-identifier">
+                <ptf-user-identifier [username]="userName"></ptf-user-identifier>
+            </div>
+
+            <div id="navigation-section" class="flex-row p6">
+                <a [routerLink]=pages.HOME>Home</a>
+                <a [routerLink]=pages.ABOUT>About</a>
+                <a [routerLink]=pages.PORTFOLIO>Portfolio</a>
+                <a [routerLink]=pages.BLOG>Blog</a>
+            </div>
+
+            <div>
+                <ptf-social-media-icons></ptf-social-media-icons>
+            </div>
+        </div>
+    </div>
+
+    <div id="lower-top-bar">
+        <div id="lower-top-bar-content">
+            <div class="p2 faint-white-text">{{capitalizeFirst(currentPage)}}</div>
+
+            <div *ngIf="currentPage === pages.BLOG">
+
+            </div>
+
+            <div *ngIf="currentPage === pages.PORTFOLIO">
+
+            </div>
+        </div>
+    </div>
+
+</div>
