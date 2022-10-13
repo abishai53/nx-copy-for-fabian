@@ -1,6 +1,6 @@
 export enum Pages {
-  HOME = 'home',
-  ABOUT = 'about',
-  BLOG = 'blog',
-  PORTFOLIO = 'portfolio',
+  HOME = 'Home',
+  ABOUT = 'About',
+  BLOG = 'Blog',
+  PROJECTS = 'Projects',
 }

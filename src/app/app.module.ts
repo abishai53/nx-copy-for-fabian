@@ -8,15 +8,15 @@ import {HomeComponent} from './pages/home/home.component'
 import {NgModule} from '@angular/core'
 import {Pages} from '../shared/pages'
 import {HomeModule} from './pages/home/home.module'
-import {PortfolioComponent} from './pages/portfolio/portfolio.component'
 import {HeaderModule} from './skeleton/header/header.module'
+import {ProjectsComponent} from './pages/projects/projects.component'
 
 const routes: Routes = [
-    {path: '', redirectTo: `/${Pages.HOME}`, pathMatch: 'full'},
+    {path: '', redirectTo: Pages.HOME, pathMatch: 'full'},
     {path: Pages.HOME, component: HomeComponent},
     {path: Pages.ABOUT, component: AboutComponent},
     {path: Pages.BLOG, component: BlogComponent},
-    {path: Pages.PORTFOLIO, component: PortfolioComponent}
+    {path: Pages.PROJECTS, component: ProjectsComponent}
 ]
 
 @NgModule({

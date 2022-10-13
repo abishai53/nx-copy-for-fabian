@@ -11,9 +11,4 @@ export class HeaderComponent {
     pages = Pages
 
     @Input() currentPage = ''
-
-    capitalizeFirst(text: string): string {
-        const firstLetter = text?.charAt(0)
-        return firstLetter?.toUpperCase() + text?.slice(1)
-    }
 }

@@ -8,10 +8,10 @@
             </div>
 
             <div id="navigation-section" class="flex-row p6">
-                <a [routerLink]=pages.HOME>Home</a>
-                <a [routerLink]=pages.ABOUT>About</a>
-                <a [routerLink]=pages.PORTFOLIO>Portfolio</a>
-                <a [routerLink]=pages.BLOG>Blog</a>
+                <a [routerLink]=pages.HOME>{{pages.HOME}}</a>
+                <a [routerLink]=pages.ABOUT>{{pages.ABOUT}}</a>
+                <a [routerLink]=pages.BLOG>{{pages.BLOG}}</a>
+                <a [routerLink]=pages.PROJECTS>{{pages.PROJECTS}}</a>
             </div>
 
             <div>
@@ -22,13 +22,9 @@
 
     <div id="lower-top-bar">
         <div id="lower-top-bar-content">
-            <div class="p2 faint-white-text">{{capitalizeFirst(currentPage)}}</div>
+            <div class="p2 faint-white-text">{{currentPage}}</div>
 
             <div *ngIf="currentPage === pages.BLOG">
-
-            </div>
-
-            <div *ngIf="currentPage === pages.PORTFOLIO">
 
             </div>
         </div>
