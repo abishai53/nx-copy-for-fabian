@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core'
-import {Pages} from '../../../shared/pages'
+import {Navigation} from '../../navigation'
 
 @Component({
     selector: 'ptf-header',
@@ -8,7 +8,7 @@ import {Pages} from '../../../shared/pages'
 })
 export class HeaderComponent {
     userName = 'Ezra Orina'
-    pages = Pages
+    pages = Navigation
 
     @Input() currentPage = ''
 }
