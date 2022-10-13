@@ -9,4 +9,5 @@ import {NavigablePage} from '../navigable-page'
 })
 export class HomeComponent implements NavigablePage {
     pageName = Pages.HOME
+    pages = Pages
 }
