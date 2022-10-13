@@ -1,6 +1,6 @@
 <div id="entire-page">
 
-    <div class="black-background">
+    <div class="light-black-bg">
         <ptf-header  [currentPage]="currentPage"></ptf-header>
     </div>
 
@@ -8,9 +8,8 @@
         <router-outlet (activate)="getCurrentPage($event)"></router-outlet>
     </div>
 
-    <div class="black-background">
+    <div class="light-black-bg">
         <ptf-footer></ptf-footer>
     </div>
 
 </div>
-

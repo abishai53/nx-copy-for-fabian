@@ -4,9 +4,9 @@ import {NavigablePage} from '../navigable-page'
 
 @Component({
     selector: 'ptf-portfolio',
-    templateUrl: 'portfolio.component.html',
-    styleUrls: ['portfolio.component.scss']
+    templateUrl: 'projects.component.html',
+    styleUrls: ['projects.component.scss']
 })
-export class PortfolioComponent implements NavigablePage {
-    pageName = Pages.PORTFOLIO
+export class ProjectsComponent implements NavigablePage {
+    pageName = Pages.PROJECTS
 }
