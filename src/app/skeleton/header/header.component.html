@@ -1,0 +1,33 @@
+<div class="standard-padding thick-white-border">
+
+    <div id="top-bar">
+        <div id="top-bar-content" class="flex-row bold faint-white-text">
+
+            <div id="user-identifier">
+                <ptf-user-identifier [username]="userName"></ptf-user-identifier>
+            </div>
+
+            <div id="navigation-section" class="flex-row p6">
+                <a [routerLink]=pages.HOME>{{pages.HOME}}</a>
+                <a [routerLink]=pages.ABOUT>{{pages.ABOUT}}</a>
+                <a [routerLink]=pages.BLOG>{{pages.BLOG}}</a>
+                <a [routerLink]=pages.PROJECTS>{{pages.PROJECTS}}</a>
+            </div>
+
+            <div>
+                <ptf-social-media-icons></ptf-social-media-icons>
+            </div>
+        </div>
+    </div>
+
+    <div id="lower-top-bar">
+        <div id="lower-top-bar-content">
+            <div class="p2 faint-white-text">{{currentPage}}</div>
+
+            <div *ngIf="currentPage === pages.BLOG">
+
+            </div>
+        </div>
+    </div>
+
+</div>

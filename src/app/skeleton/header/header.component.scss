@@ -1,0 +1,20 @@
+@import 'src/shared/colors';
+
+#top-bar {height: 100px}
+#lower-top-bar {height: 95px}
+#user-identifier {width: 12%}
+#navigation-section a {font-weight: 500}
+
+#top-bar-content{
+  height: 40px;
+  width: 100%;
+  margin: 30px 0;
+}
+#navigation-section {
+  width: 25%;
+  gap: 32px;
+}
+#lower-top-bar-content {
+  height: 75px;
+  margin: 15px 0 5px 0;
+}
