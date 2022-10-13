@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {Pages} from '../../../shared/pages'
+import {Navigation} from '../../shared-components/navigation'
 import {NavigablePage} from '../navigable-page'
 
 @Component({
@@ -8,5 +8,5 @@ import {NavigablePage} from '../navigable-page'
     styleUrls: ['about.component.scss']
 })
 export class AboutComponent implements NavigablePage {
-    pageName = Pages.ABOUT
+    pageName = Navigation.ABOUT
 }

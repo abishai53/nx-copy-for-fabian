@@ -1,22 +1,22 @@
 import {RouterModule, Routes} from '@angular/router'
-import {AboutComponent} from './pages/about/about.component'
+import {AboutComponent} from './static-portfolio/about/about.component'
 import {AppComponent} from './app.component'
-import {BlogComponent} from './pages/blog/blog.component'
+import {BlogComponent} from './static-portfolio/blog/blog.component'
 import {BrowserModule} from '@angular/platform-browser'
-import {FooterModule} from './skeleton/footer/footer.module'
-import {HomeComponent} from './pages/home/home.component'
+import {FooterModule} from './shared-components/skeleton/footer/footer.module'
+import {HomeComponent} from './static-portfolio/home/home.component'
 import {NgModule} from '@angular/core'
-import {Pages} from '../shared/pages'
-import {HomeModule} from './pages/home/home.module'
-import {HeaderModule} from './skeleton/header/header.module'
-import {ProjectsComponent} from './pages/projects/projects.component'
+import {Navigation} from './shared-components/navigation'
+import {HomeModule} from './static-portfolio/home/home.module'
+import {HeaderModule} from './shared-components/skeleton/header/header.module'
+import {ProjectsComponent} from './static-portfolio/projects/projects.component'
 
 const routes: Routes = [
-    {path: '', redirectTo: Pages.HOME, pathMatch: 'full'},
-    {path: Pages.HOME, component: HomeComponent},
-    {path: Pages.ABOUT, component: AboutComponent},
-    {path: Pages.BLOG, component: BlogComponent},
-    {path: Pages.PROJECTS, component: ProjectsComponent}
+    {path: '', redirectTo: Navigation.HOME, pathMatch: 'full'},
+    {path: Navigation.HOME, component: HomeComponent},
+    {path: Navigation.ABOUT, component: AboutComponent},
+    {path: Navigation.BLOG, component: BlogComponent},
+    {path: Navigation.PROJECTS, component: ProjectsComponent}
 ]
 
 @NgModule({

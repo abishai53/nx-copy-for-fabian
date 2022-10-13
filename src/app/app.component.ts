@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {NavigablePage} from './pages/navigable-page'
+import {NavigablePage} from './static-portfolio/navigable-page'
 
 // import "@fontsource/plus-jakarta-sans"
 
