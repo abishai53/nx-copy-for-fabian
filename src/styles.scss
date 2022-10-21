@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'src/shared/colors.scss';
+@import 'src/app/shared-components/utility-files/colors';
+@import 'src/app/shared-components/utility-files/shared-styles';
 
 * {box-sizing: border-box}
 html {font-family: 'Plus Jakarta Sans', sans-serif}
 p {margin: inherit;}
+
 .bold {font-weight: 700}
 .semi-bold {font-weight: 400}
 .p1 {font-size: 72px}

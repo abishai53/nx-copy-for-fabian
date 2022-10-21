@@ -6,7 +6,7 @@ import {BrowserModule} from '@angular/platform-browser'
 import {FooterModule} from './shared-components/skeleton/footer/footer.module'
 import {HomeComponent} from './static-portfolio/home/home.component'
 import {NgModule} from '@angular/core'
-import {Navigation} from './shared-components/navigation'
+import {Navigation} from './shared-components/utility-files/navigation'
 import {HomeModule} from './static-portfolio/home/home.module'
 import {HeaderModule} from './shared-components/skeleton/header/header.module'
 import {ProjectsComponent} from './static-portfolio/projects/projects.component'
@@ -32,4 +32,4 @@ const routes: Routes = [
     bootstrap: [AppComponent],
     exports: []
 })
-export class AppModule { }
+export class AppModule {}
