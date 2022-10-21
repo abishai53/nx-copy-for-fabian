@@ -4,7 +4,7 @@
 
 * {box-sizing: border-box}
 html {font-family: 'Plus Jakarta Sans', sans-serif}
-p {margin: inherit;}
+p {margin: inherit}
 
 .bold {font-weight: 700}
 .semi-bold {font-weight: 400}
@@ -16,9 +16,11 @@ p {margin: inherit;}
 .p6 {font-size: 16px}
 .sharp-black-bg {background: $sharpBlack}
 .light-black-bg {background: $lightBlack}
-.white-background {background: $brightWhite}
-.spacer {height: 10px}
+.faint-white-bg {background: $faintWhite}
+.bright-white-bg {background: $brightWhite}
+.spacer-10 {height: 10px}
 .spacer-50 {height: 50px}
+.spacer-40 {height: 40px}
 .sharp-black-text {color: $sharpBlack}
 .light-black-text {color: $lightBlack}
 .faint-white-text {color: $faintWhite}
@@ -29,7 +31,7 @@ p {margin: inherit;}
 .centered-div {margin: auto}
 .standard-padding {padding: 0 120px}
 .linear-fill {background: linear-gradient(90deg,$linearLeft 0%, $linearRight 70%)}
-.faint-white-fill {background: $faintWhite}
+
 .clickable {cursor: pointer}
 
 a {
@@ -41,10 +43,16 @@ a {
   flex-direction: row;
   justify-content: space-between;
 }
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .linear-text {
   background: linear-gradient(90deg, $linearLeft 0%, $linearRight 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  width: fit-content;
 }
 .horizontal-line {
   height: 1px;
