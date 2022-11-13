@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {NavigablePage} from './static-portfolio/navigable-page'
+import {Navigable} from './ptf-shared/utility-files/navigable'
 
 // import "@fontsource/plus-jakarta-sans"
 
@@ -11,7 +11,7 @@ import {NavigablePage} from './static-portfolio/navigable-page'
 export class AppComponent {
     title = 'portfolio-client'
     currentPage = ''
-    getCurrentPage(page: NavigablePage): void {
+    getCurrentPage(page: Navigable): void {
         this.currentPage = page.pageName
     }
 }

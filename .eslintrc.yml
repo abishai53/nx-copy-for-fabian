@@ -1,4 +1,5 @@
 ---
+root: true
 ignorePatterns:
   - '!**/*'
 overrides:
@@ -6,7 +7,7 @@ overrides:
       - "*.ts"
     parserOptions:
       project:
-        - tsconfig.json
+        - tsconfig.base.json
       createDefaultProgram: true
     extends:
       - plugin:@angular-eslint/recommended
@@ -15,12 +16,10 @@ overrides:
       "@angular-eslint/directive-selector":
         - error
         - type: attribute
-          prefix: ptf
           style: camelCase
       "@angular-eslint/component-selector":
         - error
         - type: element
-          prefix: ptf
           style: kebab-case
 
       no-loss-of-precision: error
