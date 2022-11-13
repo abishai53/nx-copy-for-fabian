@@ -1,0 +1,49 @@
+@import "../../shared-components/utility-files/colors";
+
+#ezra-introduction-text {width: 50%}
+#ezra-at-a-glance img {margin-left: 30px}
+#main-introduction {min-height: 600px}
+#ezra-main-picture-container {position: relative}
+
+#bg-ellipse {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+#ezra-main-picture {
+  position: absolute;
+  bottom: 50px;
+  right: 5%;
+}
+.rectangle {
+  width: calc(100% - 5px);
+  height: 40px
+}
+#open-projects {
+  position: relative;
+  width: calc(55% + 5px);
+  height: 45px;
+}
+#linear-button-shadow {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+}
+#solid-button-rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  border: black;
+}
+#open-projects-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 40px;
+  z-index: 10;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 5px);
+}
