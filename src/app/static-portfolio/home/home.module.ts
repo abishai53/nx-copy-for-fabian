@@ -1,4 +1,4 @@
-import {RouterLink, RouterLinkWithHref} from '@angular/router'
+import { RouterLink } from '@angular/router'
 import {HomeComponent} from './home.component'
 import {NgModule} from '@angular/core'
 
@@ -6,8 +6,7 @@ import {NgModule} from '@angular/core'
     declarations: [HomeComponent],
     exports: [HomeComponent],
     imports: [
-        RouterLink,
-        RouterLinkWithHref
+        RouterLink
     ]
 })
 export class HomeModule {}
