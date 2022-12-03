@@ -1,28 +1,26 @@
 ---
 root: true
 ignorePatterns:
-  - projects/**/*
+  - "!**/*"
 overrides:
   - files:
       - "*.ts"
-    parserOptions:
-      project:
-        - tsconfig.json
-      createDefaultProgram: true
-    extends:
-      - plugin:@angular-eslint/recommended
-      - plugin:@angular-eslint/template/process-inline-templates
+      - "*.tsx"
+      - "*.js"
+      - "*.jsx"
+    "extends":
+      - "plugin:@nrwl/nx/angular"
+      - "plugin:@angular-eslint/template/process-inline-templates"
     rules:
-      "@angular-eslint/directive-selector":
+      "@nrwl/nx/enforce-module-boundaries":
         - error
-        - type: attribute
-          prefix: ptf
-          style: camelCase
-      "@angular-eslint/component-selector":
-        - error
-        - type: element
-          prefix: ptf
-          style: kebab-case
+        - enforceBuildableLibDependency: true
+          banTransitiveDependencies: true
+          allow: []
+          depConstraints:
+            - sourceTag: "*"
+              onlyDependOnLibsWithTags:
+                - "*"
 
       no-loss-of-precision: error
       no-import-assign: error

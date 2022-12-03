@@ -1,0 +1,66 @@
+<div class="standard-padding">
+
+    <div class="spacer-50"></div>
+
+    <div class="flex-row">
+        <div class="p2 bold faint-white-text">
+            <p>Working on Something Awesome?</p>
+            <p class="linear-text">Let's Create Together!</p>
+        </div>
+
+        <div id="email-address-container">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                    <img src="assets/envelope.svg" alt="envelope svg">
+                </span>
+                <input placeholder="Your email address" type="text" [(ngModel)]="userEmailAddress" pInputText>
+                <span class="p-inputgroup-addon">
+                    <img src="assets/arrow-right-white.svg"
+                         alt="arrow right svg"
+                         class="clickable"
+                         (click)="sendEmail()">
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer-50"></div>
+
+    <div class="flex-row">
+        <div id="quote">
+            <div id="user-identifier">
+                <shr-user-identifier></shr-user-identifier>
+            </div>
+            <div class="spacer-10"></div>
+
+            <div class="p5 gray-on-black-text">
+                <p>From gradle to grave, we toil. Perpetual life</p>
+                <p>pressure makes us forget that the real endgame</p>
+                <p>is the happiness of our families and that </p>
+                <p>of our posterity.</p>
+            </div>
+        </div>
+
+        <div class="p5">
+            <p class="faint-white-text ">Work Inquiries</p>
+            <div class="spacer-10"></div>
+            <p class="gray-on-black-text">Interested in working with me?</p>
+            <p class="gray-on-black-text">Email:
+                <a class="faint-white-text" href="mailto:ezra.orina@uj.edu">ezra.orina@uj.edu</a>
+            </p>
+        </div>
+
+        <div>
+            <p class="faint-white-text ">Follow Me</p>
+            <div class="spacer-10"></div>
+            <shr-social-media-icons></shr-social-media-icons>
+        </div>
+    </div>
+
+    <div class="spacer-50"></div>
+    <div class="flex-row p6 gray-on-white-text">
+        <div>&copy; 2022. Developed By Ezra Orina</div>
+        <div>All rights reserved</div>
+    </div>
+    <div class="spacer-50"></div>
+</div>

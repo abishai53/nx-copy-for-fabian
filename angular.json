@@ -1,6 +1,9 @@
 {
   "version": 2,
   "projects": {
+    "assets": "libs/assets",
+    "common-ui": "libs/common-ui",
+    "components": "libs/components",
     "portfolio-client": "apps/portfolio-client"
   }
 }

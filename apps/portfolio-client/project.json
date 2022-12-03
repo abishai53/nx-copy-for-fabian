@@ -1,30 +1,26 @@
 {
   "name": "portfolio-client",
-  "projectType": "application",
-  "generators": {
-    "@schematics/angular:component": {
-      "style": "scss",
-      "skipTests": true,
-      "standalone": false,
-      "prefix": "ptf",
-      "export": true
-    }
-  },
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/portfolio-client/src",
   "prefix": "ptf",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
       "options": {
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/common-ui/src/lib/styles"]
+        },
         "outputPath": "dist/apps/portfolio-client",
         "index": "apps/portfolio-client/src/index.html",
         "main": "apps/portfolio-client/src/main.ts",
-        "polyfills": "apps/portfolio-client/src/polyfills.ts",
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/portfolio-client/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/portfolio-client/src/favicon.ico",
-          "apps/portfolio-client/src/assets"
+          "apps/portfolio-client/src/assets",
+          "libs/assets/src/lib/assets"
         ],
         "styles": [
           "apps/portfolio-client/src/styles.scss",
@@ -85,24 +81,6 @@
         "browserTarget": "portfolio-client:build"
       }
     },
-    "test": {
-      "executor": "@angular-devkit/build-angular:karma",
-      "options": {
-        "main": "apps/portfolio-client/src/test.ts",
-        "polyfills": "apps/portfolio-client/src/polyfills.ts",
-        "tsConfig": "apps/portfolio-client/tsconfig.spec.json",
-        "karmaConfig": "apps/portfolio-client/karma.conf.js",
-        "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/portfolio-client/src/favicon.ico",
-          "apps/portfolio-client/src/assets"
-        ],
-        "styles": [
-          "apps/portfolio-client/src/styles.scss"
-        ],
-        "scripts": []
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
@@ -111,6 +89,15 @@
           "apps/portfolio-client/**/*.html"
         ]
       }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/portfolio-client/jest.config.ts",
+        "passWithNoTests": true
+      }
     }
-  }
+  },
+  "tags": []
 }

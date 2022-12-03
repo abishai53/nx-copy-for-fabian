@@ -17,12 +17,13 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "useDefineForClassFields": false,
-    "paths": {},
+    "paths": {
+      "@ezra-clients/assets": ["libs/assets/src/index.ts"],
+      "@ezra-clients/common-ui": ["libs/common-ui/src/index.ts"],
+      "@ezra-clients/components": ["libs/components/src/index.ts"]
+    },
     "rootDir": "."
   },
   "angularCompilerOptions": {
@@ -31,8 +32,5 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
