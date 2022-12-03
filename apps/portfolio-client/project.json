@@ -20,7 +20,11 @@
         "assets": [
           "apps/portfolio-client/src/favicon.ico",
           "apps/portfolio-client/src/assets",
-          "libs/assets/src/lib/assets"
+          {
+            "glob": "**/*",
+            "input": "./libs/assets/src/lib/assets",
+            "output": "/assets/"
+          }
         ],
         "styles": [
           "apps/portfolio-client/src/styles.scss",

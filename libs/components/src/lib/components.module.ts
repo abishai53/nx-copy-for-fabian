@@ -1,17 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {SocialMediaModule} from './social-media/social-media.module'
-import {FooterModule} from './footer/footer.module'
-import {UserIdentifierModule} from './user-identifier/user-identifier.module'
+import {NgModule} from '@angular/core'
+import {CommonModule} from '@angular/common'
 
 @NgModule({
-  imports: [CommonModule],
-  exports: [
-      SocialMediaModule,
-      FooterModule,
-      UserIdentifierModule
-  ],
-
+    imports: [CommonModule]
 })
 export class ComponentsModule {}
-

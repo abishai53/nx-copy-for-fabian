@@ -8,6 +8,7 @@ overrides:
       - "*.tsx"
       - "*.js"
       - "*.jsx"
+    "plugins": ["@nrwl/nx"]
     "extends":
       - "plugin:@nrwl/nx/angular"
       - "plugin:@angular-eslint/template/process-inline-templates"

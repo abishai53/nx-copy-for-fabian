@@ -5,6 +5,22 @@
   "sourceRoot": "libs/components/src",
   "prefix": "shr",
   "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/components/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/components/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/components/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
