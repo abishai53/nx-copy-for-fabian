@@ -1,0 +1,15 @@
+<div id="entire-page">
+
+    <div class="light-black-bg">
+        <ptf-header  [currentPage]="currentPage"></ptf-header>
+    </div>
+
+    <div class="bright-white-bg">
+        <router-outlet (activate)="getCurrentPage($event)"></router-outlet>
+    </div>
+
+    <div class="light-black-bg">
+        <shr-footer></shr-footer>
+    </div>
+
+</div>
