@@ -8,11 +8,11 @@ p {margin: inherit}
 .semi-bold {font-weight: 400}
 .p1 {font-size: 72px}
 .p2 {font-size: 48px}
-.p2-half {font-size: 40px}
 .p3 {font-size: 24px}
 .p4 {font-size: 20px}
 .p5 {font-size: 18px}
 .p6 {font-size: 16px}
+.button-label {font-size: 40px}
 .sharp-black-bg {background: $sharpBlack}
 .light-black-bg {background: $lightBlack}
 .faint-white-bg {background: $faintWhite}
@@ -29,6 +29,7 @@ p {margin: inherit}
 .left-aligned-text {text-align: left}
 .centered-div {margin: auto}
 .standard-padding {padding: 0 120px}
+.solid-blue-fill {background: $linearLeft}
 .linear-fill {background: linear-gradient(90deg,$linearLeft 0%, $linearRight 70%)}
 .faded-linear-fill {background: linear-gradient(90deg, $fadedLinearLeft 0%, $fadedLinearRight 100%);}
 .clickable {cursor: pointer}

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core'
+import {SlpButtonFill, SlpElementSize, SlpTextColor} from '../utility-files/slp-element-config'
 
 @Component({
     selector: 'slp-header',
@@ -7,4 +8,7 @@ import {Component} from '@angular/core'
 })
 export class HeaderComponent {
     userName = 'Ezra Orina'
+    buttonSize = SlpElementSize.SMALL
+    buttonFill = SlpButtonFill.LINEAR
+    textColor = SlpTextColor.WHITE
 }
