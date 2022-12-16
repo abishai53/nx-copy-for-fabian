@@ -12,4 +12,9 @@ export class LandingPageComponent implements SlpNavigablePage {
     pageName = SlpNavigation.LANDING_PAGE
     buttonSize = SlpElementSize.VERY_LARGE
     buttonTextColor = SlpTextColor.WHITE
+    imagePath = '/cover-images'
+    imageTransformation  = [{
+        "height": "280",
+        "width": "520"
+    }]
 }

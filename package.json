@@ -22,6 +22,7 @@
     "@angular/router": "~15.0.0",
     "@fontsource/plus-jakarta-sans": "^4.5.10",
     "@nrwl/angular": "^15.2.3",
+    "imagekitio-angular": "^1.0.2",
     "primeicons": "^6.0.1",
     "primeng": "^15.0.0-rc.1",
     "rxjs": "~7.5.0",
