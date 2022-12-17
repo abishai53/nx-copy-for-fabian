@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core'
 import {HeaderComponent} from './header.component'
 import {UserIdentifierModule} from '@ezra-clients/components'
-import {ButtonModule} from '../button/button.module'
+import {ButtonModule} from '@ezra-clients/components'
 
 @NgModule({
     declarations: [HeaderComponent],

@@ -1,0 +1,25 @@
+button {width: 320px}
+
+#solution-image {
+  width: 520px;
+  height: 280px;
+}
+
+#form-fields {
+  height: 400px;
+}
+
+.img-scale-down {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  //overflow: hidden;
+}
+
+.field {
+  width: 400px;
+}
+
+.field {
+  input, textarea, p-inputNumber, .p-inputnumber-buttons-horizontal {width: 100%}
+}

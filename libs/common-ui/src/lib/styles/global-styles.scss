@@ -4,6 +4,15 @@
 html {font-family: 'Plus Jakarta Sans', sans-serif}
 p {margin: inherit}
 
+
+@each $size in $sizes {
+  .icon-#{$size} {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+}
+
 .bold {font-weight: 700}
 .semi-bold {font-weight: 400}
 .p1 {font-size: 72px}
@@ -33,7 +42,14 @@ p {margin: inherit}
 .linear-fill {background: linear-gradient(90deg,$linearLeft 0%, $linearRight 70%)}
 .faded-linear-fill {background: linear-gradient(90deg, $fadedLinearLeft 0%, $fadedLinearRight 100%);}
 .clickable {cursor: pointer}
-
+.align-bottom {align-self: end}
+.position-relative {position: relative}
+.block {display: block}
+.position-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 a {
   text-decoration: none;
   color: inherit;

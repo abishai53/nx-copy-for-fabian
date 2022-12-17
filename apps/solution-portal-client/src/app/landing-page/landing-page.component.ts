@@ -1,6 +1,6 @@
 import {Component} from '@angular/core'
-import {SlpNavigablePage} from '../utility-files/slp-navigable-page'
-import {SlpNavigation} from '../utility-files/slp-navigation'
+import {SlpNavigablePage} from '../model/slp-navigable-page'
+import {SlpNavigation} from '../model/slp-navigation'
 import {SlpElementSize, SlpTextColor} from '../utility-files/slp-element-config'
 
 @Component({
@@ -10,6 +10,7 @@ import {SlpElementSize, SlpTextColor} from '../utility-files/slp-element-config'
 })
 export class LandingPageComponent implements SlpNavigablePage {
     pageName = SlpNavigation.LANDING_PAGE
+    pages = SlpNavigation
     buttonSize = SlpElementSize.VERY_LARGE
     buttonTextColor = SlpTextColor.WHITE
 }

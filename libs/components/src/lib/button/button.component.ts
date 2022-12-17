@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core'
-import {SlpButtonFill, SlpElementSize, SlpTextColor} from '../utility-files/slp-element-config'
+import {SlpButtonFill, SlpElementSize, SlpTextColor} from '../../../../../apps/solution-portal-client/src/app/utility-files/slp-element-config'
 
 @Component({
-    selector: 'slp-button',
+    selector: 'shr-button',
     templateUrl: 'button.component.html',
     styleUrls: ['button.component.scss']
 })
