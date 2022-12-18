@@ -1,0 +1,98 @@
+<div class="standard-padding">
+    <div class="spacer-10px"></div>
+    <shr-back-arrow></shr-back-arrow>
+    <div class="spacer-10px"></div>
+    <label for="solution-image" class="block linear-text">Cover Image</label>
+
+    <form [formGroup]="formGroup">
+        <div class="flex-row half-width">
+            <div id="solution-image" class="position-relative">
+                <img src="assets/grid.svg" alt="grid">
+                <img [src]="url" alt="solution cover image" class="position-absolute img-scale-down">
+            </div>
+            <div class="align-bottom">
+                <input hidden
+                       type="file"
+                       id="img-upload-btn"
+                       formControlName="coverImage"
+                       (change)="onImageUpload($event)"
+                />
+                <label for="img-upload-btn" class="clickable">
+                    <img src="assets/upload-icon.svg"
+                         alt="upload icon"
+                         pTooltip="Upload Cover Image"
+                    />
+                </label>
+            </div>
+        </div>
+        <p class="p-24px gray-on-white-text">{{imageFileName}}</p>
+        <div class="spacer-40px"></div>
+
+        <div id="form-fields" class="flex-row">
+            <div class="flex-column">
+                <div class="field">
+                    <label for="label" class="block linear-text">Label</label>
+                    <input id="label" type="text" pInputText formControlName="label" (change)="setSysName($event)"/>
+                </div>
+                <div class="field">
+                    <label for="sysName" class="block linear-text">System Name</label>
+                    <input id="sysName" type="text" pInputText formControlName="sysName"/>
+                </div>
+                <div class="field">
+                    <label for="url" class="block linear-text">URL</label>
+                    <input id="url" type="text" pInputText formControlName="url"/>
+                </div>
+                <div class="field">
+                    <label for="index" class="block linear-text">Index</label>
+                    <p-inputNumber id="index"
+                                   pInputText
+                                   [showButtons]="true"
+                                   buttonLayout="horizontal"
+                                   formControlName="index"
+                                   incrementButtonIcon="pi pi-plus"
+                                   decrementButtonIcon="pi pi-minus" >
+                    </p-inputNumber>
+                </div>
+            </div>
+
+            <div class="flex-column">
+                <div class="p-inputgroup field">
+                    <input type="text" formControlName="documentationText" [value]="documentationFileName" pInputText/>
+                    <span class="p-inputgroup-addon">
+                        <input hidden
+                               type="file"
+                               id="file-upload-btn"
+                               formControlName="documentation"
+                               (change)="onFileUpload($event)"
+                        />
+                        <label for="file-upload-btn" class="clickable">
+                            <img src="assets/upload-icon-white.svg" alt="upload icon">
+                        </label>
+                    </span>
+                </div>
+
+                <div class="field">
+                    <label for="auth" class="block linear-text">Requires Authentication</label>
+                    <p-inputSwitch id="auth" formControlName="auth"></p-inputSwitch>
+                </div>
+
+                <div class="field">
+                    <label for="description" class="block linear-text">Short Description</label>
+                    <textarea id="description"  rows="8" pInputTextarea formControlName="description"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer-50px"></div>
+        <shr-forms-buttons (save)="registerSolution()"
+                           (cancel)="back()"
+                           [disableSave]="formGroup.invalid"
+                           [deleteLabel]="'Delete Solution'"
+                           [cancelLabel]="'Go Back'"
+                           [saveLabel]="'Register Solution'"
+                           [buttonWidth]="320">
+        </shr-forms-buttons>
+    </form>
+
+    <div class="spacer-50px"></div>
+</div>

@@ -7,7 +7,7 @@
                 <shr-user-identifier [username]="userName"></shr-user-identifier>
             </div>
 
-            <div id="navigation-section" class="flex-row p7">
+            <div id="navigation-section" class="flex-row p-16px">
                 <a [routerLink]=pages.HOME>{{pages.HOME}}</a>
                 <a [routerLink]=pages.ABOUT>{{pages.ABOUT}}</a>
                 <a [routerLink]=pages.BLOG>{{pages.BLOG}}</a>
@@ -22,7 +22,7 @@
 
     <div id="lower-top-bar">
         <div id="lower-top-bar-content">
-            <div class="p2 faint-white-text">{{currentPage}}</div>
+            <div class="p-48px faint-white-text">{{currentPage}}</div>
 
             <div *ngIf="currentPage === pages.BLOG">
 

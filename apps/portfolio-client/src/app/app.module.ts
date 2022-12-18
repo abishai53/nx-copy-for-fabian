@@ -3,7 +3,7 @@ import {AboutComponent} from './about/about.component'
 import {AppComponent} from './app.component'
 import {BlogComponent} from './blog/blog.component'
 import {BrowserModule} from '@angular/platform-browser'
-import {FooterModule} from '@ezra-clients/components'
+import {ComponentsModule, FooterModule} from '@ezra-clients/components'
 import {HomeComponent} from './home/home.component'
 import {NgModule} from '@angular/core'
 import {Navigation} from './utility-files/navigation'
@@ -23,10 +23,11 @@ const routes: Routes = [
     declarations: [AppComponent],
     imports: [
         BrowserModule,
-        FooterModule,
+        ComponentsModule,
         HeaderModule,
         HomeModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        FooterModule
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -1,16 +1,9 @@
 .parent {
-  position: relative;
   height: 60px;
   border-radius: 10px;
 }
 
-.small {width: 145px}
-.medium {width: 240px}
-.large {width: 275px}
-.very-large {width: 320px}
-
 .text {
-  position: absolute;
   top: 5px;
   left: 5px;
   height: 40px;

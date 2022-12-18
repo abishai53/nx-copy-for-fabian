@@ -9,6 +9,7 @@ import {Imagekit} from '@ezra-clients/common-ui'
 import {HeaderModule} from './header/header.module'
 import {LandingPageModule} from './landing-page/landing-page.module'
 import {ImagekitioAngularModule} from 'imagekitio-angular'
+import {AddSolutionModule} from './add-solution/add-solution.module'
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,7 +23,8 @@ import {ImagekitioAngularModule} from 'imagekitio-angular'
         RouterModule.forRoot(appRoutes),
         FooterModule,
         HeaderModule,
-        LandingPageModule
+        LandingPageModule,
+        AddSolutionModule
     ],
     providers: [],
     bootstrap: [AppComponent]
