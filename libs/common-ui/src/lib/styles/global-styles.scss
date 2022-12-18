@@ -1,25 +1,30 @@
+@use "sass:string";
 @import "colors";
 
 * {box-sizing: border-box}
+
+$font-sizes: 16px, 18px, 20px, 24px, 40px, 48px, 72px;
+@each $size in $font-sizes {
+  .p-#{$size} {
+    font-size: $size
+  }
+}
+
+$heights: 10px, 20px, 40px, 50px;
+@each $height in $heights {
+  .spacer-#{$height} {
+    height: $height
+  }
+}
+
 html {font-family: 'Plus Jakarta Sans', sans-serif}
 p {margin: inherit}
-
 .bold {font-weight: 700}
 .semi-bold {font-weight: 400}
-.p1 {font-size: 72px}
-.p2 {font-size: 48px}
-.p3 {font-size: 40px}
-.p4 {font-size: 24px}
-.p5 {font-size: 20px}
-.p6 {font-size: 18px}
-.p7 {font-size: 16px}
 .sharp-black-bg {background: $sharpBlack}
 .light-black-bg {background: $lightBlack}
 .faint-white-bg {background: $faintWhite}
 .bright-white-bg {background: $brightWhite}
-.spacer-10 {height: 10px}
-.spacer-50 {height: 50px}
-.spacer-40 {height: 40px}
 .sharp-black-text {color: $sharpBlack}
 .light-black-text {color: $lightBlack}
 .faint-white-text {color: $faintWhite}
@@ -33,7 +38,14 @@ p {margin: inherit}
 .linear-fill {background: linear-gradient(90deg,$linearLeft 0%, $linearRight 70%)}
 .faded-linear-fill {background: linear-gradient(90deg, $fadedLinearLeft 0%, $fadedLinearRight 100%);}
 .clickable {cursor: pointer}
-
+.align-bottom {align-self: end}
+.position-relative {position: relative}
+.block {display: block}
+.position-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 a {
   text-decoration: none;
   color: inherit;
