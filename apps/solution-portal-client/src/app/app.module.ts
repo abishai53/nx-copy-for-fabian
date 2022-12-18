@@ -7,6 +7,7 @@ import {appRoutes} from './app.routes'
 import {FooterModule} from '@ezra-clients/components'
 import {HeaderModule} from './header/header.module'
 import {LandingPageModule} from './landing-page/landing-page.module'
+import {AddSolutionModule} from './add-solution/add-solution.module'
 
 @NgModule({
     declarations: [AppComponent],
@@ -15,7 +16,8 @@ import {LandingPageModule} from './landing-page/landing-page.module'
         RouterModule.forRoot(appRoutes),
         FooterModule,
         HeaderModule,
-        LandingPageModule
+        LandingPageModule,
+        AddSolutionModule
     ],
     providers: [],
     bootstrap: [AppComponent]

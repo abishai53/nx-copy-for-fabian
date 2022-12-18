@@ -68,7 +68,7 @@ overrides:
       no-return-assign: error
       no-useless-catch: error
       no-useless-computed-key: error
-      no-useless-constructor: error
+      no-useless-constructor: warn
       no-useless-escape: error
       no-useless-return: error
       no-var: error
