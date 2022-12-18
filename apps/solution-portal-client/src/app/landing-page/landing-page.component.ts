@@ -1,7 +1,7 @@
 import {Component} from '@angular/core'
 import {SlpNavigablePage} from '../model/slp-navigable-page'
 import {SlpNavigation} from '../model/slp-navigation'
-import {SlpElementSize, SlpTextColor} from '../utility-files/slp-element-config'
+import {ElementSize, TextColor} from '@ezra-clients/common-ui'
 
 @Component({
     selector: 'slp-landing-page',
@@ -11,6 +11,6 @@ import {SlpElementSize, SlpTextColor} from '../utility-files/slp-element-config'
 export class LandingPageComponent implements SlpNavigablePage {
     pageName = SlpNavigation.LANDING_PAGE
     pages = SlpNavigation
-    buttonSize = SlpElementSize.VERY_LARGE
-    buttonTextColor = SlpTextColor.WHITE
+    buttonSize = ElementSize.VERY_LARGE
+    buttonTextColor = TextColor.WHITE
 }

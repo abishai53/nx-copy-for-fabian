@@ -18,8 +18,5 @@ button {width: 320px}
 
 .field {
   width: 400px;
-}
-
-.field {
-  input, textarea, p-inputNumber, .p-inputnumber-buttons-horizontal {width: 100%}
+  input, textarea, p-inputNumber {width: 100%}
 }

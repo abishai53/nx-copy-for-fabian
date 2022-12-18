@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core'
-import {SlpButtonFill, SlpElementSize, SlpTextColor} from '../../../../../apps/solution-portal-client/src/app/utility-files/slp-element-config'
+import {ButtonFill, ElementSize, TextColor} from '@ezra-clients/common-ui'
 
 @Component({
     selector: 'shr-button',
@@ -9,10 +9,10 @@ import {SlpButtonFill, SlpElementSize, SlpTextColor} from '../../../../../apps/s
 export class ButtonComponent {
     @Input() fill = 'solid'
     @Input() text = 'Click Here'
-    @Input() size: SlpElementSize = SlpElementSize.MEDIUM
-    @Input() textColor: SlpTextColor = SlpTextColor.BLACK
+    @Input() size: ElementSize = ElementSize.MEDIUM
+    @Input() textColor: TextColor = TextColor.BLACK
 
-    buttonSize = SlpElementSize
-    buttonFill = SlpButtonFill
-    color = SlpTextColor
+    buttonSize = ElementSize
+    buttonFill = ButtonFill
+    color = TextColor
 }

@@ -1,7 +1,7 @@
 <div class="standard-padding">
-    <div class="spacer-10"></div>
+    <div class="spacer-10px"></div>
     <shr-back-arrow></shr-back-arrow>
-    <div class="spacer-10"></div>
+    <div class="spacer-10px"></div>
     <label for="solution-image" class="block linear-text">Cover Image</label>
 
     <form [formGroup]="formGroup">
@@ -25,8 +25,8 @@
                 </label>
             </div>
         </div>
-        <p class="p4 gray-on-white-text">{{imageFileName}}</p>
-        <div class="spacer-40"></div>
+        <p class="p-24px gray-on-white-text">{{imageFileName}}</p>
+        <div class="spacer-40px"></div>
 
         <div id="form-fields" class="flex-row">
             <div class="flex-column">
@@ -45,6 +45,7 @@
                 <div class="field">
                     <label for="index" class="block linear-text">Index</label>
                     <p-inputNumber id="index"
+                                   pInputText
                                    [showButtons]="true"
                                    buttonLayout="horizontal"
                                    formControlName="index"
@@ -79,11 +80,10 @@
                     <label for="description" class="block linear-text">Short Description</label>
                     <textarea id="description"  rows="8" pInputTextarea formControlName="description"></textarea>
                 </div>
-
             </div>
         </div>
 
-        <div class="spacer-50"></div>
+        <div class="spacer-50px"></div>
         <div class="flex-row">
             <button pButton
                     type="button"
@@ -111,5 +111,5 @@
         </div>
     </form>
 
-    <div class="spacer-50"></div>
+    <div class="spacer-50px"></div>
 </div>

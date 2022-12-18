@@ -1,7 +1,7 @@
 import {Component} from '@angular/core'
 import {SlpNavigablePage} from '../model/slp-navigable-page'
 import {SlpNavigation} from '../model/slp-navigation'
-import {FormBuilder, FormControl, Validators} from '@angular/forms'
+import {FormBuilder, Validators} from '@angular/forms'
 import {Location} from '@angular/common'
 
 @Component({
@@ -16,7 +16,7 @@ export class AddSolutionComponent implements SlpNavigablePage {
     documentationFileName = ''
 
     formGroup = this.fb.group({
-        coverImage: ['',  [Validators.required]],
+        coverImage: ['', [Validators.required]],
         label: ['', [Validators.required, Validators.maxLength(30)]],
         url: ['', [Validators.required, Validators.maxLength(200)]],
         index: ['', [Validators.required]],
@@ -30,8 +30,10 @@ export class AddSolutionComponent implements SlpNavigablePage {
         }, Validators.required)
     })
 
-    constructor(private fb: FormBuilder,
-                private location: Location) {}
+    constructor(
+        private fb: FormBuilder,
+        private location: Location
+    ) {}
 
     back(): void {
         this.location.back()
@@ -41,7 +43,7 @@ export class AddSolutionComponent implements SlpNavigablePage {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0]
             this.imageFileName = file.name
-            let reader = new FileReader()
+            const reader = new FileReader()
             reader.readAsDataURL(file)
             reader.onload = (event) => {
                 this.url = event.target?.result
@@ -58,7 +60,8 @@ export class AddSolutionComponent implements SlpNavigablePage {
 
     setSysName(event: any): void {
         const label: string = event.target.value
-        this.formGroup.controls.sysName.setValue(label.replace(' ', ''))
+        this.formGroup.controls.sysName.setValue(label.toLowerCase().split(' ')
+            .join('_'))
     }
 
     registerSolution(): void {
