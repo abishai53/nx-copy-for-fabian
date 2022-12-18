@@ -1,0 +1,33 @@
+<p-confirmDialog header="Just to be sure, Buddy" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<div class="flex-row">
+    <button pButton
+            [label]="deleteLabel"
+            icon="pi pi-trash"
+            class="p-button-warning"
+            (click)="confirmDelete()"
+            [disabled]="disableDelete"
+            [hidden]="hideDelete"
+            [style.width.px]="buttonWidth">
+    </button>
+
+    <button pButton
+            [label]="cancelLabel"
+            icon="pi pi-times"
+            class="p-button-secondary"
+            (click)="confirmCancel()"
+            [disabled]="disableCancel"
+            [hidden]="hideCancel"
+            [style.width.px]="buttonWidth">
+    </button>
+
+    <button pButton
+            [label]="saveLabel"
+            icon="pi pi-check"
+            class="p-button-success"
+            (click)="confirmSave()"
+            [disabled]="disableSave"
+            [hidden]="hideSave"
+            [style.width.px]="buttonWidth">
+    </button>
+</div>

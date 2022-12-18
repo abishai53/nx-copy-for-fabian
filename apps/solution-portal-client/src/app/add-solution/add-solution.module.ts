@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core'
 import {AddSolutionComponent} from './add-solution.component'
-import {BackArrowComponent} from '@ezra-clients/components'
-import {ButtonModule} from 'primeng/button'
+import {BackArrowComponent, FormButtonsModule} from '@ezra-clients/components'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {InputTextModule} from 'primeng/inputtext'
 import {InputTextareaModule} from 'primeng/inputtextarea'
@@ -17,7 +16,6 @@ import {TooltipModule} from 'primeng/tooltip'
         BackArrowComponent,
         BackArrowComponent,
         BackArrowComponent,
-        ButtonModule,
         ReactiveFormsModule,
         FormsModule,
         InputTextModule,
@@ -25,7 +23,8 @@ import {TooltipModule} from 'primeng/tooltip'
         InputNumberModule,
         DropdownModule,
         InputSwitchModule,
-        TooltipModule
+        TooltipModule,
+        FormButtonsModule
     ]
 })
 export class AddSolutionModule {}

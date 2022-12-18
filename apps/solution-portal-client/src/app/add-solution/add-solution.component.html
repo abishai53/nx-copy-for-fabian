@@ -84,31 +84,14 @@
         </div>
 
         <div class="spacer-50px"></div>
-        <div class="flex-row">
-            <button pButton
-                    type="button"
-                    label="Delete Solution"
-                    icon="pi pi-trash"
-                    class="p-button-warning">
-            </button>
-
-            <button pButton
-                    type="reset"
-                    label="Go Back"
-                    icon="pi pi-times"
-                    class="p-button-secondary"
-                    (click)="back()">
-            </button>
-
-            <button pButton
-                    type="button"
-                    label="Register Solution"
-                    icon="pi pi-check"
-                    class="p-button-success"
-                    (click)="registerSolution()"
-                    [disabled]="formGroup.invalid">
-            </button>
-        </div>
+        <shr-forms-buttons (onSave)="registerSolution()"
+                           (onCancel)="back()"
+                           [disableSave]="formGroup.invalid"
+                           [deleteLabel]="'Delete Solution'"
+                           [cancelLabel]="'Go Back'"
+                           [saveLabel]="'Register Solution'"
+                           [buttonWidth]="320">
+        </shr-forms-buttons>
     </form>
 
     <div class="spacer-50px"></div>
