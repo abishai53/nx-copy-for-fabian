@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router'
-import {SlpNavigation} from './model/slp-navigation'
+import {SlpNavigation} from '../model/slp-navigation'
 import {LandingPageComponent} from './landing-page/landing-page.component'
 import {AddSolutionComponent} from './add-solution/add-solution.component'
 
