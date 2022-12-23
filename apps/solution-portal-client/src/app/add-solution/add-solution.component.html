@@ -86,7 +86,6 @@
                             <img src="assets/upload-icon-white.svg" alt="upload icon">
                         </label>
                     </span>
-
                 </div>
 
                 <div class="field">
@@ -102,8 +101,8 @@
         </div>
 
         <div class="spacer-50px"></div>
-        <shr-forms-buttons (onSave)="registerSolution()"
-                           (onCancel)="back()"
+        <shr-forms-buttons (save)="registerSolution()"
+                           (cancel)="back()"
                            [disableSave]="formGroup.invalid"
                            [deleteLabel]="'Delete Solution'"
                            [cancelLabel]="'Go Back'"
