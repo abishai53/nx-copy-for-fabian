@@ -1,31 +1,48 @@
-<div class="standard-padding">
+<div class="standard-padding p-24px">
     <div class="spacer-10px"></div>
     <shr-back-arrow></shr-back-arrow>
     <div class="spacer-10px"></div>
     <label for="solution-image" class="block linear-text">Cover Image</label>
 
     <form [formGroup]="formGroup">
-        <div class="flex-row half-width">
-            <div id="solution-image" class="position-relative">
-                <img src="assets/grid.svg" alt="grid">
-                <img [src]="url" alt="solution cover image" class="position-absolute img-scale-down">
-            </div>
-            <div class="align-bottom">
-                <input hidden
-                       type="file"
-                       id="img-upload-btn"
-                       formControlName="coverImage"
-                       (change)="onImageUpload($event)"
-                />
-                <label for="img-upload-btn" class="clickable">
-                    <img src="assets/upload-icon.svg"
-                         alt="upload icon"
-                         pTooltip="Upload Cover Image"
+        <div class="flex-row">
+            <div class="flex-row half-width">
+                <div id="solution-image" class="position-relative">
+                    <img src="assets/grid.svg" alt="grid">
+                    <img [src]="url" alt="solution cover image" class="position-absolute img-scale-down">
+                </div>
+                <div class="align-bottom">
+                    <input hidden
+                           type="file"
+                           id="img-upload-btn"
+                           formControlName="coverImage"
+                           (change)="onImageUpload($event)"
                     />
-                </label>
+                    <label for="img-upload-btn" class="clickable">
+                        <img src="assets/upload-icon.svg"
+                             alt="upload icon"
+                             pTooltip="Upload Cover Image"
+                        />
+                    </label>
+                </div>
             </div>
+
+
+            <div class="flex-column p-18px gray-on-white-text">
+                <div *ngIf="showImageError">
+                    <p-message severity="error" text="Invalid Image File! Accepted file types are "></p-message>
+                    <div class="spacer-10px"></div>
+                    <span *ngFor="let ext of imageExtOptions">{{ext}}  </span>
+                </div>
+                <div *ngIf="showDocError">
+                    <p-message severity="error" text="Invalid Document File! Accepted file types are "></p-message>
+                    <div class="spacer-10px"></div>
+                    <span *ngFor="let ext of docExtOptions">{{ext}}  </span>
+                </div>
+            </div>
+
         </div>
-        <p class="p-24px gray-on-white-text">{{imageFileName}}</p>
+        <div class="p-24px gray-on-white-text">{{imageFileName}}</div>
         <div class="spacer-40px"></div>
 
         <div id="form-fields" class="flex-row">
@@ -69,6 +86,7 @@
                             <img src="assets/upload-icon-white.svg" alt="upload icon">
                         </label>
                     </span>
+
                 </div>
 
                 <div class="field">

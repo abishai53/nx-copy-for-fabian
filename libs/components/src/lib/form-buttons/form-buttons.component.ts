@@ -30,21 +30,21 @@ export class FormButtonsComponent {
 
     confirmDelete() {
         this.confirmationService.confirm({
-            message: this.deleteLabel,
+            message: this.deleteLabel + '?',
             accept: () => this.onDelete.emit()
         })
     }
 
     confirmCancel() {
         this.confirmationService.confirm({
-            message: this.cancelLabel,
+            message: this.cancelLabel + '?',
             accept: () => this.onCancel.emit()
         })
     }
 
     confirmSave() {
         this.confirmationService.confirm({
-            message: this.saveLabel,
+            message: this.saveLabel + '?',
             accept: () => this.onSave.emit()
         })
     }

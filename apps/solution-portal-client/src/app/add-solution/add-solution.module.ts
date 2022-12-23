@@ -8,6 +8,8 @@ import {InputNumberModule} from 'primeng/inputnumber'
 import {DropdownModule} from 'primeng/dropdown'
 import {InputSwitchModule} from 'primeng/inputswitch'
 import {TooltipModule} from 'primeng/tooltip'
+import {NgClass, NgForOf, NgIf} from '@angular/common'
+import {MessageModule} from 'primeng/message'
 
 @NgModule({
     declarations: [AddSolutionComponent],
@@ -24,7 +26,11 @@ import {TooltipModule} from 'primeng/tooltip'
         DropdownModule,
         InputSwitchModule,
         TooltipModule,
-        FormButtonsModule
+        FormButtonsModule,
+        NgIf,
+        NgForOf,
+        MessageModule,
+        NgClass
     ]
 })
 export class AddSolutionModule {}

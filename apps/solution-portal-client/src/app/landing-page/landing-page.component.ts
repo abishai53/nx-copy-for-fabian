@@ -1,6 +1,6 @@
 import {Component} from '@angular/core'
-import {SlpNavigablePage} from '../model/slp-navigable-page'
-import {SlpNavigation} from '../model/slp-navigation'
+import {SlpNavigablePage} from '../../model/slp-navigable-page'
+import {SlpNavigation} from '../../model/slp-navigation'
 import {ElementSize, TextColor} from '@ezra-clients/common-ui'
 
 @Component({
