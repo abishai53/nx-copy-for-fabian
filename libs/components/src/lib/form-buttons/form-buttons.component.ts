@@ -8,9 +8,9 @@ import {ConfirmationService} from 'primeng/api'
     providers: [ConfirmationService]
 })
 export class FormButtonsComponent {
-    @Output() onSave = new EventEmitter
-    @Output() onDelete = new EventEmitter
-    @Output() onCancel = new EventEmitter
+    @Output() save = new EventEmitter()
+    @Output() delete = new EventEmitter()
+    @Output() cancel = new EventEmitter()
 
     @Input() hideDelete = true
     @Input() hideCancel = true
@@ -30,22 +30,22 @@ export class FormButtonsComponent {
 
     confirmDelete() {
         this.confirmationService.confirm({
-            message: this.deleteLabel,
-            accept: () => this.onDelete.emit()
+            message: this.deleteLabel + '?',
+            accept: () => this.delete.emit()
         })
     }
 
     confirmCancel() {
         this.confirmationService.confirm({
-            message: this.cancelLabel,
-            accept: () => this.onCancel.emit()
+            message: this.cancelLabel + '?',
+            accept: () => this.cancel.emit()
         })
     }
 
     confirmSave() {
         this.confirmationService.confirm({
-            message: this.saveLabel,
-            accept: () => this.onSave.emit()
+            message: this.saveLabel + '?',
+            accept: () => this.save.emit()
         })
     }
 }
