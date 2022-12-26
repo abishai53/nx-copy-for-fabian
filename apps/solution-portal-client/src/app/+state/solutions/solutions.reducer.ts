@@ -31,22 +31,24 @@ export const solutionsReducer = createReducer(
     initialSolutionsState,
 
     on(
-        SolutionsActions.actionFailure,
-        (state, {error}) => ({...state, status: 'error', errorMessage: error})
-    ),
-
-    on(
-        SolutionsActions.removeSolutionSuccess,
+        SolutionsActions.deleteSolutionSuccess,
         (state, {id}) => solutionsAdapter.removeOne(id, {...state, status: 'success'})
     ),
 
     on(
-        SolutionsActions.loadSolutionsSuccess,
+        SolutionsActions.initSolutionsSuccess,
         (state, {solutions}) => solutionsAdapter.setAll(solutions, {...state, status: 'success'})
     ),
 
+
     on(
-        SolutionsActions.initSolutions,
+        SolutionsActions.updateSolutionSuccess,
+        SolutionsActions.addSolutionSuccess,
+        (state, {solution}) => solutionsAdapter.upsertOne(solution, {...state, status: 'success'})
+    ),
+
+    on(
+        SolutionsActions.startInitSolutions,
         SolutionsActions.startAddingSolution,
         SolutionsActions.startUpdatingSolution,
         SolutionsActions.startDeletingSolution,
@@ -54,8 +56,10 @@ export const solutionsReducer = createReducer(
     ),
 
     on(
-        SolutionsActions.updateSolutionSuccess,
-        SolutionsActions.addSolutionSuccess,
-        (state, {solution}) => solutionsAdapter.upsertOne(solution, {...state, status: 'success'})
+        SolutionsActions.addSolutionsFailure,
+        SolutionsActions.updateSolutionFailure,
+        SolutionsActions.deleteSolutionFailure,
+        SolutionsActions.initSolutionFailure,
+        (state, {error}) => ({...state, status: 'error', errorMessage: error})
     )
 )

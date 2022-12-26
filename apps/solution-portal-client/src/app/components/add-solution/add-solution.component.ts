@@ -3,11 +3,11 @@ import {SlpNavigablePage} from '../../model/slp-navigable-page'
 import {SlpNavigation} from '../../model/slp-navigation'
 import {NonNullableFormBuilder, Validators} from '@angular/forms'
 import {Location} from '@angular/common'
-import {SolutionService} from '../../services/solution-service'
-import {DocumentationExt, ImageExt} from '@ezra-clients/common-ui'
-import {take} from 'rxjs'
+import {documentationExt, imageExt} from '@ezra-clients/common-ui'
 import {AddFormErrors, getExt, validateDocument, validateImage} from './add-form-validators'
 import {createSolution} from '../../+state/solutions/solutions.models'
+import {SolutionsFacade} from '../../+state/solutions/solutions.facade'
+import * as SolutionsActions from '../../+state/solutions/solutions.actions'
 
 @Component({
     selector: 'slp-add-solution',
@@ -22,8 +22,8 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
     documentationFileName = ''
     uploadedImageExt = ''
     uploadedDocumentExt = ''
-    imageExtOptions = Object.keys(ImageExt)
-    docExtOptions = Object.keys(DocumentationExt)
+    imageExtOptions = imageExt
+    docExtOptions = documentationExt
     addFormErrors = AddFormErrors
     errors = new Map<AddFormErrors, boolean>([
         [AddFormErrors.invalidFileExtension, false],
@@ -51,10 +51,9 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
     })
 
     constructor(
-        private fb: NonNullableFormBuilder,
-        private location: Location,
-        private solutionService: SolutionService
-    ) {}
+        private readonly fb: NonNullableFormBuilder,
+        private readonly location: Location,
+        private readonly solutionFacade: SolutionsFacade) {}
 
     ngOnInit() {
         this.initialize()
@@ -110,11 +109,13 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
 
     setSysName(event: any): void {
         const label: string = event.target.value
-        this.formGroup.controls.sysName.setValue(label
-            .trim()
-            .toLowerCase()
-            .split(' ')
-            .join('_'))
+        this.formGroup.controls.sysName.setValue(
+            label
+                .trim()
+                .toLowerCase()
+                .split(' ')
+                .join('_')
+        )
     }
 
     registerSolution(): void {
@@ -129,8 +130,6 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
             url: this.formGroup.value.url
         })
 
-        this.solutionService.createSolution(newSolution)
-            .pipe(take(1))
-            .subscribe()
+        this.solutionFacade.dispatch(SolutionsActions.startAddingSolution({solution: newSolution}))
     }
 }

@@ -20,7 +20,7 @@ describe('Solutions Reducer', () => {
                 createSolutionsEntity('PRODUCT-AAA'),
                 createSolutionsEntity('PRODUCT-zzz')
             ]
-            const action = SolutionsActions.loadSolutionsSuccess({solutions})
+            const action = SolutionsActions.initSolutionsSuccess({solutions})
 
             const result: SolutionsState = solutionsReducer(
                 initialSolutionsState,

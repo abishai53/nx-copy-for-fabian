@@ -12,11 +12,11 @@ export class SolutionsEffects {
 
     fetchAllSolutions$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(SolutionsActions.initSolutions),
+            ofType(SolutionsActions.startInitSolutions),
             switchMap(() =>
                 this.solutionService.fetchAllSolutions().pipe(
-                    map((solutions) => SolutionsActions.loadSolutionsSuccess({solutions})),
-                    catchError((error) => of(SolutionsActions.actionFailure({error})))
+                    map((solutions) => SolutionsActions.initSolutionsSuccess({solutions})),
+                    catchError((error) => of(SolutionsActions.initSolutionFailure({error})))
                 )
             )
         )
@@ -28,7 +28,7 @@ export class SolutionsEffects {
             mergeMap(({solution}) =>
                 this.solutionService.createSolution(solution).pipe(
                     map((solution) => SolutionsActions.addSolutionSuccess({solution})),
-                    catchError((error) => of(SolutionsActions.actionFailure({error})))
+                    catchError((error) => of(SolutionsActions.addSolutionsFailure({error})))
                 )
             )
         )

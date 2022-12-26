@@ -84,7 +84,7 @@ describe('SolutionsFacade', () => {
             expect(list.length).toBe(0)
             expect(isLoaded).toBe(false)
 
-            store.dispatch(SolutionsActions.loadSolutionsSuccess({
+            store.dispatch(SolutionsActions.initSolutionsSuccess({
                 solutions: [
                     createSolutionsEntity('AAA'),
                     createSolutionsEntity('BBB')

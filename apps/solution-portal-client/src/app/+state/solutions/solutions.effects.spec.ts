@@ -27,10 +27,10 @@ describe('SolutionsEffects', () => {
 
     describe('init$', () => {
         it('should work', () => {
-            actions = hot('-a-|', {a: SolutionsActions.initSolutions()})
+            actions = hot('-a-|', {a: SolutionsActions.startInitSolutions()})
 
             const expected = hot('-a-|', {
-                a: SolutionsActions.loadSolutionsSuccess({solutions: []})
+                a: SolutionsActions.initSolutionsSuccess({solutions: []})
             })
 
             expect(effects.init$).toBeObservable(expected)

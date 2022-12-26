@@ -1,5 +1,5 @@
 import {AbstractControl} from '@angular/forms'
-import {DocumentationExt, ImageExt} from '@ezra-clients/common-ui'
+import {documentationExt, imageExt} from '@ezra-clients/common-ui'
 
 export function getExt(fileName: string): string {
     const ext = fileName.split('.')?.pop()
@@ -7,13 +7,11 @@ export function getExt(fileName: string): string {
 }
 
 export function validateImage(control: AbstractControl) {
-    const imageExtOptions = Object.keys(ImageExt)
-    return control.value && !imageExtOptions.includes(getExt(control.value)) ? {'invalidImageExtension': true} : null
+    return control.value && imageExt.includes(getExt(control.value)) ? {'invalidImageExtension': true} : null
 }
 
 export function validateDocument(control: AbstractControl) {
-    const docExtOptions = Object.keys(DocumentationExt)
-    return control.value && !docExtOptions.includes(getExt(control.value)) ? {'invalidFileExtension': true} : null
+    return control.value && documentationExt.includes(getExt(control.value)) ? {'invalidFileExtension': true} : null
 }
 
 export enum AddFormErrors {
