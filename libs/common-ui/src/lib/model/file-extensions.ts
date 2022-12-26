@@ -1,21 +1,21 @@
-export enum DocumentationExt {
-    pdf = '',
-    docx = '',
-    doc = '',
-    txt = '',
-    xls = '',
-    xlsx = '',
-    odt = '',
-    ods = '',
-    ppt = '',
-    pptx = ''
-}
+export const documentationExt = [
+    'pdf',
+    'docx',
+    'doc',
+    'txt',
+    'xls',
+    'xlsx',
+    'odt',
+    'ods',
+    'ppt',
+    'pptx'
+]
 
-export enum ImageExt {
-    jpeg = '',
-    jpg = '',
-    png = '',
-    svg = '',
-    raw = '',
-    eps = ''
-}
+export const imageExt = [
+    'jpeg',
+    'jpg',
+    'png',
+    'svg',
+    'raw',
+    'eps'
+]
