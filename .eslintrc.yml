@@ -51,7 +51,7 @@ overrides:
       no-constructor-return: error
 
       # alternate way of doing things
-      camelcase: warn
+      # camelcase: warn
       eqeqeq: error
       no-else-return: error
       no-empty: error
@@ -65,10 +65,10 @@ overrides:
       no-mixed-operators: error
       no-redeclare: error
       no-regex-spaces: error
-      no-return-assign: error
+      # no-return-assign: error
       no-useless-catch: error
       no-useless-computed-key: error
-      no-useless-constructor: warn
+      # no-useless-constructor: warn
       no-useless-escape: error
       no-useless-return: error
       no-var: error
@@ -111,9 +111,7 @@ overrides:
       function-call-argument-newline:
         - error
         - consistent
-      function-paren-newline: error
       generator-star-spacing: error
-      implicit-arrow-linebreak: error
       indent: error
       key-spacing: error
       keyword-spacing: error

@@ -5,6 +5,7 @@
     "common-ui": "libs/common-ui",
     "components": "libs/components",
     "portfolio-client": "apps/portfolio-client",
+    "services": "libs/services",
     "solution-portal-client": "apps/solution-portal-client",
     "solution-portal-client-e2e": "apps/solution-portal-client-e2e"
   }

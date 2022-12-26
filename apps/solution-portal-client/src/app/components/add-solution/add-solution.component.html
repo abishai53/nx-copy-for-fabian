@@ -29,12 +29,12 @@
 
 
             <div class="flex-column p-18px gray-on-white-text">
-                <div *ngIf="showImageError">
+                <div *ngIf="errors.get(addFormErrors.invalidImageExtension)">
                     <p-message severity="error" text="Invalid Image File! Accepted file types are "></p-message>
                     <div class="spacer-10px"></div>
                     <span *ngFor="let ext of imageExtOptions">{{ext}}  </span>
                 </div>
-                <div *ngIf="showDocError">
+                <div *ngIf="errors.get(addFormErrors.invalidFileExtension)">
                     <p-message severity="error" text="Invalid Document File! Accepted file types are "></p-message>
                     <div class="spacer-10px"></div>
                     <span *ngFor="let ext of docExtOptions">{{ext}}  </span>
@@ -49,15 +49,20 @@
             <div class="flex-column">
                 <div class="field">
                     <label for="label" class="block linear-text">Label</label>
-                    <input id="label" type="text" pInputText formControlName="label" (change)="setSysName($event)"/>
+                    <input id="label"
+                           pInputText
+                           [maxlength]="maxLen['label']"
+                           formControlName="label"
+                           (input)="setSysName($event)"
+                    />
                 </div>
                 <div class="field">
                     <label for="sysName" class="block linear-text">System Name</label>
-                    <input id="sysName" type="text" pInputText formControlName="sysName"/>
+                    <input id="sysName" pInputText formControlName="sysName"/>
                 </div>
                 <div class="field">
                     <label for="url" class="block linear-text">URL</label>
-                    <input id="url" type="text" pInputText formControlName="url"/>
+                    <input id="url" pInputText [maxLength]="maxLen['url']" formControlName="url"/>
                 </div>
                 <div class="field">
                     <label for="index" class="block linear-text">Index</label>
@@ -95,7 +100,12 @@
 
                 <div class="field">
                     <label for="description" class="block linear-text">Short Description</label>
-                    <textarea id="description"  rows="8" pInputTextarea formControlName="description"></textarea>
+                    <textarea id="description"
+                              rows="8"
+                              pInputTextarea
+                              [maxlength]="maxLen['description']"
+                              formControlName="description">
+                    </textarea>
                 </div>
             </div>
         </div>
