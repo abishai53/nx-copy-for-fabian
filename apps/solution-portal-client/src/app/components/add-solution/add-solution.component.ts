@@ -3,11 +3,11 @@ import {SlpNavigablePage} from '../../model/slp-navigable-page'
 import {SlpNavigation} from '../../model/slp-navigation'
 import {NonNullableFormBuilder, Validators} from '@angular/forms'
 import {Location} from '@angular/common'
-import {SolutionService} from '../../service/solution-service'
-import {createSolution} from '../../model/solution'
-import {DocumentationExt, ImageExt} from '@ezra-clients/common-ui'
-import {take} from 'rxjs'
-import {getExt, validateDocument, validateImage} from './add-form-validators'
+import {documentationExt, imageExt} from '@ezra-clients/common-ui'
+import {AddFormErrors, getExt, validateDocument, validateImage} from './add-form-validators'
+import {createSolution} from '../../+state/solutions/solutions.models'
+import {SolutionsFacade} from '../../+state/solutions/solutions.facade'
+import * as SolutionsActions from '../../+state/solutions/solutions.actions'
 
 @Component({
     selector: 'slp-add-solution',
@@ -22,18 +22,22 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
     documentationFileName = ''
     uploadedImageExt = ''
     uploadedDocumentExt = ''
-    imageExtOptions = Object.keys(ImageExt)
-    docExtOptions = Object.keys(DocumentationExt)
-    showImageError = false
-    showDocError = false
+    imageExtOptions = imageExt
+    docExtOptions = documentationExt
+    addFormErrors = AddFormErrors
+    errors = new Map<AddFormErrors, boolean>([
+        [AddFormErrors.invalidFileExtension, false],
+        [AddFormErrors.invalidImageExtension, false]
+    ])
+    maxLen = {'url': 200, 'label': 30, 'description': 400}
 
     formGroup = this.fb.group({
         coverImage: ['', [Validators.required, validateImage]],
-        label: ['', [Validators.required, Validators.maxLength(30)]],
-        url: ['', [Validators.required, Validators.maxLength(200)]],
+        label: ['', [Validators.required, Validators.maxLength(this.maxLen['label'])]],
+        url: ['', [Validators.required, Validators.maxLength(this.maxLen['url'])]],
         index: [0, [Validators.required]],
         auth: [true, [Validators.required]],
-        description: ['', [Validators.required, Validators.maxLength(400)]],
+        description: ['', [Validators.required, Validators.maxLength(this.maxLen['description'])]],
         documentation: ['', [Validators.required, validateDocument]],
 
         documentationText: this.fb.control({
@@ -47,13 +51,13 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
     })
 
     constructor(
-        private fb: NonNullableFormBuilder,
-        private location: Location,
-        private solutionService: SolutionService
-    ) {}
+        private readonly fb: NonNullableFormBuilder,
+        private readonly location: Location,
+        private readonly solutionFacade: SolutionsFacade) {}
 
     ngOnInit() {
         this.initialize()
+        this.formGroup.valueChanges.subscribe(() => this.updateFormErrors())
     }
 
     initialize = () => {
@@ -64,17 +68,29 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
 
     back = () => this.location.back()
 
+    updateFormErrors = () => {
+        const imageErrors = this.formGroup.controls.coverImage.errors
+        const docErrors = this.formGroup.controls.documentation.errors
+
+        this.errors.set(
+            AddFormErrors.invalidImageExtension,
+            imageErrors ? imageErrors[AddFormErrors.invalidImageExtension] === true : false
+        )
+
+        this.errors.set(
+            AddFormErrors.invalidFileExtension,
+            docErrors ? docErrors[AddFormErrors.invalidFileExtension] === true : false
+        )
+
+        this.url = this.formGroup.controls.coverImage.invalid ? this.defaultUrl : this.url
+    }
+
     onImageUpload(event: any): void {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0]
             this.imageFileName = file.name
 
-            if (this.formGroup.controls.coverImage.invalid) {
-                this.showImageError = true
-                this.url = this.defaultUrl
-
-            } else {
-                this.showImageError = false
+            if (!this.formGroup.controls.coverImage.invalid) {
                 this.uploadedImageExt = getExt(file.name)
                 const reader = new FileReader()
                 reader.readAsDataURL(file)
@@ -87,17 +103,19 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0]
             this.uploadedDocumentExt = getExt(file.name)
-            this.showDocError = this.formGroup.controls.documentation.invalid
             this.documentationFileName = file.name
         }
     }
 
     setSysName(event: any): void {
         const label: string = event.target.value
-        this.formGroup.controls.sysName.setValue(label
-            .toLowerCase()
-            .split(' ')
-            .join('_'))
+        this.formGroup.controls.sysName.setValue(
+            label
+                .trim()
+                .toLowerCase()
+                .split(' ')
+                .join('_')
+        )
     }
 
     registerSolution(): void {
@@ -112,12 +130,6 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
             url: this.formGroup.value.url
         })
 
-        this.solutionService.saveSolution(newSolution)
-        .pipe(take(1))
-        .subscribe({
-            next: () => this.initialize(),
-            error: error => console.log(error)
-        })
+        this.solutionFacade.dispatch(SolutionsActions.startAddingSolution({solution: newSolution}))
     }
-
 }
