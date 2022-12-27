@@ -10,6 +10,7 @@ import {InputSwitchModule} from 'primeng/inputswitch'
 import {TooltipModule} from 'primeng/tooltip'
 import {NgClass, NgForOf, NgIf} from '@angular/common'
 import {MessageModule} from 'primeng/message'
+import {MessagesModule} from 'primeng/messages'
 
 @NgModule({
     declarations: [AddSolutionComponent],
@@ -30,7 +31,8 @@ import {MessageModule} from 'primeng/message'
         NgIf,
         NgForOf,
         MessageModule,
-        NgClass
+        NgClass,
+        MessagesModule
     ]
 })
 export class AddSolutionModule {}

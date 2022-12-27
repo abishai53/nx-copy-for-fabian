@@ -7,11 +7,11 @@ export function getExt(fileName: string): string {
 }
 
 export function validateImage(control: AbstractControl) {
-    return control.value && imageExt.includes(getExt(control.value)) ? {'invalidImageExtension': true} : null
+    return control.value && !imageExt.includes(getExt(control.value)) ? {'invalidImageExtension': true} : null
 }
 
 export function validateDocument(control: AbstractControl) {
-    return control.value && documentationExt.includes(getExt(control.value)) ? {'invalidFileExtension': true} : null
+    return control.value && !documentationExt.includes(getExt(control.value)) ? {'invalidFileExtension': true} : null
 }
 
 export enum AddFormErrors {

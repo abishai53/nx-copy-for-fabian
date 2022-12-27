@@ -7,8 +7,7 @@ import {SolutionsEntity} from './solutions.models'
 export const SOLUTIONS_FEATURE_KEY = 'solutions'
 
 export interface SolutionsState extends EntityState<SolutionsEntity> {
-  solutions: SolutionsEntity[]
-  errorMessage: any | null
+  error: any | null
   status: 'pending' | 'loading' | 'error' | 'success'
 }
 
@@ -17,13 +16,12 @@ export interface SolutionsPartialState {
 }
 
 export const solutionsAdapter: EntityAdapter<SolutionsEntity> =
-  createEntityAdapter<SolutionsEntity>({selectId: solution => solution.index})
+  createEntityAdapter<SolutionsEntity>({selectId: solution => solution.sys_id})
 
 export const initialSolutionsState: SolutionsState =
   solutionsAdapter.getInitialState({
-      solutions: [],
       status: 'pending',
-      errorMessage: null
+      error: null
   })
 
 export const solutionsReducer = createReducer(
@@ -39,7 +37,6 @@ export const solutionsReducer = createReducer(
         SolutionsActions.initSolutionsSuccess,
         (state, {solutions}) => solutionsAdapter.setAll(solutions, {...state, status: 'success'})
     ),
-
 
     on(
         SolutionsActions.updateSolutionSuccess,
@@ -60,6 +57,6 @@ export const solutionsReducer = createReducer(
         SolutionsActions.updateSolutionFailure,
         SolutionsActions.deleteSolutionFailure,
         SolutionsActions.initSolutionFailure,
-        (state, {error}) => ({...state, status: 'error', errorMessage: error})
+        (state, {error}) => ({...state, status: 'error', error: error})
     )
 )

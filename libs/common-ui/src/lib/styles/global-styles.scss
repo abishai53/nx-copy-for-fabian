@@ -3,14 +3,14 @@
 
 * {box-sizing: border-box}
 
-$font-sizes: 16px, 18px, 20px, 24px, 40px, 48px, 72px;
+$font-sizes: 14px, 16px, 18px, 20px, 24px, 32px, 40px, 48px, 72px;
 @each $size in $font-sizes {
   .p-#{$size} {
     font-size: $size
   }
 }
 
-$heights: 10px, 20px, 40px, 50px;
+$heights: 3px, 10px, 20px, 25px, 40px, 50px, 65px, 80px, 134px;
 @each $height in $heights {
   .spacer-#{$height} {
     height: $height
@@ -21,10 +21,16 @@ html {font-family: 'Plus Jakarta Sans', sans-serif}
 p {margin: inherit}
 .bold {font-weight: 700}
 .semi-bold {font-weight: 400}
+.italic {font-style: italic}
+.spaced {letter-spacing: 0.05em}
+.dark-gray-bg {background: $grayDark}
+.simple-gray-bg {background: $graySimple}
 .sharp-black-bg {background: $sharpBlack}
 .light-black-bg {background: $lightBlack}
 .faint-white-bg {background: $faintWhite}
 .bright-white-bg {background: $brightWhite}
+.linear-gradient {background: linear-gradient(90deg, $linearLeft 0%, $linearRight 70%)}
+.yellow {background: $yellow}
 .sharp-black-text {color: $sharpBlack}
 .light-black-text {color: $lightBlack}
 .faint-white-text {color: $faintWhite}
@@ -66,8 +72,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
 }
-.linear-text {
-  background: linear-gradient(90deg, $linearLeft 0%, $linearRight 70%);
+.colored-text {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: fit-content;
@@ -75,4 +80,12 @@ a {
 .horizontal-line {
   height: 1px;
   width: 100%;
+}
+.img-scale-down {
+  top: 1%;
+  left: 1%;
+  width: 98%;
+  height: 98%;
+  object-fit: scale-down;
+  overflow: hidden;
 }

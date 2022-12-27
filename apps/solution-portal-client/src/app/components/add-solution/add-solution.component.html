@@ -2,7 +2,7 @@
     <div class="spacer-10px"></div>
     <shr-back-arrow></shr-back-arrow>
     <div class="spacer-10px"></div>
-    <label for="solution-image" class="block linear-text">Cover Image</label>
+    <label for="solution-image" class="block colored-text linear-gradient">Cover Image</label>
 
     <form [formGroup]="formGroup">
         <div class="flex-row">
@@ -29,6 +29,7 @@
 
 
             <div class="flex-column p-18px gray-text-on-white-bg">
+                <p-messages id="messages"></p-messages>
                 <div *ngIf="errors.get(addFormErrors.invalidImageExtension)">
                     <p-message severity="error" text="Invalid Image File! Accepted file types are "></p-message>
                     <div class="spacer-10px"></div>
@@ -48,7 +49,7 @@
         <div id="form-fields" class="flex-row">
             <div class="flex-column">
                 <div class="field">
-                    <label for="label" class="block linear-text">Label</label>
+                    <label for="label" class="block colored-text linear-gradient">Label</label>
                     <input id="label"
                            pInputText
                            [maxlength]="maxLen['label']"
@@ -57,15 +58,15 @@
                     />
                 </div>
                 <div class="field">
-                    <label for="sysName" class="block linear-text">System Name</label>
+                    <label for="sysName" class="block colored-text linear-gradient">System Name</label>
                     <input id="sysName" pInputText formControlName="sysName"/>
                 </div>
                 <div class="field">
-                    <label for="url" class="block linear-text">URL</label>
+                    <label for="url" class="block colored-text linear-gradient">URL</label>
                     <input id="url" pInputText [maxLength]="maxLen['url']" formControlName="url"/>
                 </div>
                 <div class="field">
-                    <label for="index" class="block linear-text">Index</label>
+                    <label for="index" class="block colored-text linear-gradient">Index</label>
                     <p-inputNumber id="index"
                                    pInputText
                                    [showButtons]="true"
@@ -94,12 +95,12 @@
                 </div>
 
                 <div class="field">
-                    <label for="auth" class="block linear-text">Requires Authentication</label>
+                    <label for="auth" class="block colored-text linear-gradient">Requires Authentication</label>
                     <p-inputSwitch id="auth" formControlName="auth"></p-inputSwitch>
                 </div>
 
                 <div class="field">
-                    <label for="description" class="block linear-text">Short Description</label>
+                    <label for="description" class="block colored-text linear-gradient">Short Description</label>
                     <textarea id="description"
                               rows="8"
                               pInputTextarea
