@@ -2,19 +2,19 @@
     <div class="spacer-40px"></div>
 
     <div class="half-width height-120">
-        <div class="linear-text"><span class="p-40px">Here </span>you will find solutions that I developed for </div>
+        <div class="colored-text linear-gradient"><span class="p-40px">Here </span>you will find solutions that I developed for </div>
         <div class="sharp-black-text">specific needs in and around my environment.</div>
     </div>
 
     <div class="half-width height-120 centered-div">
-        <div class="linear-text"><span class="p-40px">While </span>you can use some applications as a guest, </div>
+        <div class="colored-text linear-gradient"><span class="p-40px">While </span>you can use some applications as a guest, </div>
         <div class="sharp-black-text">there are those that are only meaningful when you </div>
         <div class="sharp-black-text">have a registered account. </div>
     </div>
 
     <div class="flex-row right-aligned-div">
         <div class="half-width height-120">
-            <div class="linear-text"><span class="p-40px">Make </span>sure to read the about of an </div>
+            <div class="colored-text linear-gradient"><span class="p-40px">Make </span>sure to read the about of an </div>
             <div class="sharp-black-text">application so you understand it better!</div>
         </div>
     </div>
@@ -27,8 +27,8 @@
             </span>
         </span>
     </div>
+    <div class="spacer-50px"></div>
 
-    <div class="spacer-40px"></div>
     <div class="flex-row right-aligned-div bold">
         <shr-button [text]="'+ New Solution'"
                     [size]="buttonSize"
@@ -36,5 +36,27 @@
                     [routerLink]="'/' + pages.ADD_SOLUTION">
         </shr-button>
     </div>
+    <div class="spacer-40px"></div>
+
+    <button (click)="toggleLoggedIn()" [style.width.px]="100" [style.height.px]="50">Toggle Logged In</button>
     <div class="spacer-10px"></div>
+    <button (click)="toggleAdmin()" [style.width.px]="100" [style.height.px]="50">Toggle Admin</button>
+
+    <div *ngIf="solutionCount < 1" class="centered-div half-width">
+        <p-message severity="info"
+                   text="Sorry, we will upload some applications here soon. Check back later, buddy :)">
+        </p-message>
+    </div>
+
+    <div id="gallery" class="flex-row">
+        <div *ngFor="let solution of (solutions$| async)">
+            <slp-solution-widget [solution]="solution"
+                                 [loading]="solutionsLoading$ | async"
+                                 [isLoggedIn]="loggedIn"
+                                 [isAdmin]="isAdmin">
+            </slp-solution-widget>
+        </div>
+    </div>
+    <div class="spacer-50px"></div>
+
 </div>

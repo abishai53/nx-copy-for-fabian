@@ -3,14 +3,9 @@ import {SOLUTIONS_FEATURE_KEY, SolutionsState, solutionsAdapter} from './solutio
 
 export const getSolutionsState = createFeatureSelector<SolutionsState>(SOLUTIONS_FEATURE_KEY)
 
-const {selectAll, selectEntities} = solutionsAdapter.getSelectors()
+const {selectAll, selectTotal} = solutionsAdapter.getSelectors()
 
 export const solutionsAreLoading = createSelector(
-    getSolutionsState,
-    (state: SolutionsState) => state.status === 'loading'
-)
-
-export const solutionsHaveError = createSelector(
     getSolutionsState,
     (state: SolutionsState) => state.status === 'loading'
 )
@@ -20,9 +15,9 @@ export const getSolutionsStatus = createSelector(
     (state: SolutionsState) => state.status
 )
 
-export const getSolutionsErrorMessage = createSelector(
+export const getSolutionsError = createSelector(
     getSolutionsState,
-    (state: SolutionsState) => state.errorMessage
+    (state: SolutionsState) => state.error
 )
 
 export const getAllSolutions = createSelector(
@@ -30,8 +25,7 @@ export const getAllSolutions = createSelector(
     (state: SolutionsState) => selectAll(state)
 )
 
-export const getSolutionsEntities = createSelector(
+export const getSolutionsCount = createSelector(
     getSolutionsState,
-    (state: SolutionsState) => selectEntities(state)
+    (state: SolutionsState) => selectTotal(state)
 )
-

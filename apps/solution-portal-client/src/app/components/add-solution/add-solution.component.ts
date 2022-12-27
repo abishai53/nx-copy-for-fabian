@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnDestroy, OnInit} from '@angular/core'
 import {SlpNavigablePage} from '../../model/slp-navigable-page'
 import {SlpNavigation} from '../../model/slp-navigation'
 import {NonNullableFormBuilder, Validators} from '@angular/forms'
@@ -8,15 +8,22 @@ import {AddFormErrors, getExt, validateDocument, validateImage} from './add-form
 import {createSolution} from '../../+state/solutions/solutions.models'
 import {SolutionsFacade} from '../../+state/solutions/solutions.facade'
 import * as SolutionsActions from '../../+state/solutions/solutions.actions'
+import {distinctUntilChanged, filter, Subject, tap} from 'rxjs'
+import {map, takeUntil} from 'rxjs/operators'
+import {MessageService} from 'primeng/api'
 
 @Component({
     selector: 'slp-add-solution',
     templateUrl: 'add-solution.component.html',
-    styleUrls: ['add-solution.component.scss']
+    styleUrls: ['add-solution.component.scss'],
+    providers: [MessageService]
 })
-export class AddSolutionComponent implements SlpNavigablePage, OnInit {
+export class AddSolutionComponent implements SlpNavigablePage, OnInit, OnDestroy {
+    destroyed$ = new Subject<boolean>()
     pageName = SlpNavigation.ADD_SOLUTION
     defaultUrl = 'assets/default-cover-image.svg'
+    successMessage = ''
+    errorMessage = ''
     url: any = ''
     imageFileName = ''
     documentationFileName = ''
@@ -53,11 +60,17 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
     constructor(
         private readonly fb: NonNullableFormBuilder,
         private readonly location: Location,
-        private readonly solutionFacade: SolutionsFacade) {}
+        private readonly solutionFacade: SolutionsFacade,
+        private readonly messageService: MessageService) {}
 
     ngOnInit() {
         this.initialize()
         this.formGroup.valueChanges.subscribe(() => this.updateFormErrors())
+    }
+
+    ngOnDestroy() {
+        this.destroyed$.next(true)
+        this.destroyed$.complete()
     }
 
     initialize = () => {
@@ -129,7 +142,38 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit {
             sys_name: this.formGroup.getRawValue().sysName,
             url: this.formGroup.value.url
         })
-
+        this.destroyed$.next(true)
+        this.destroyed$.next(false)
+        this.messageService.clear()
+        this.messageService.add({severity: 'info', summary: 'Saving', detail: 'Solution is being saved...'})
         this.solutionFacade.dispatch(SolutionsActions.startAddingSolution({solution: newSolution}))
+        window.scrollTo(0,0)
+        this.checkAddStatus()
+    }
+
+    private checkAddStatus = () => {
+        this.solutionFacade.solutionStatus$.pipe(
+            takeUntil(this.destroyed$),
+            map((status) => {
+                const label = this.formGroup.controls.label.value
+                if(status === 'success' && label) {
+                    this.successMessage =  label + ' has been saved'
+                    this.messageService.add({severity: 'success', summary: 'Success', detail: this.successMessage})
+                    this.initialize()
+                } else if (status === 'error') this.setErrorMessage()
+            })
+        ).subscribe()
+    }
+
+    private setErrorMessage = () => {
+        this.solutionFacade.solutionsError$.pipe(
+            takeUntil(this.destroyed$),
+            map((error) => error.error.error),
+            distinctUntilChanged((prev, curr) => prev === curr),
+            filter((errorMessage) => errorMessage != null),
+            tap((errorMessage) => {
+                this.messageService.add({severity: 'error', summary: 'Error', detail: errorMessage})
+            })
+        ).subscribe()
     }
 }

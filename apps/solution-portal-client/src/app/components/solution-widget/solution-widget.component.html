@@ -1,0 +1,60 @@
+<div *ngIf="!loading">
+    <div id="solution-image" class="position-relative">
+        <img src="assets/grid.svg" alt="grid">
+        <ik-image [path]="coverImageUrl" class="position-absolute img-scale-down"></ik-image>
+    </div>
+
+    <div class="position-relative">
+        <div class="fullWidth spacer-80px simple-gray-bg"></div>
+        <div id="solution-label" class="position-absolute bold colored-text linear-gradient p-32px">{{solution?.label}}</div>
+    </div>
+    <div class="spacer-3px"></div>
+
+    <div class="flex-row p-24px">
+
+        <div>
+            <div class="position-relative">
+                <div class="spacer-65px simple-gray-bg" [ngClass]="{'shrunk': showEditIcon, 'fullWidth': !showEditIcon}"></div>
+                <div class="position-absolute widget-button">
+                    <span>About </span>
+                    <img src="assets/info-icon.svg" alt="info icon">
+                </div>
+            </div>
+            <div class="spacer-3px"></div>
+
+            <div class="position-relative">
+                <div class="spacer-65px simple-gray-bg" [ngClass]="{'shrunk': showEditIcon, 'fullWidth': !showEditIcon}"></div>
+                <div class="position-absolute widget-button">Detailed Documentation</div>
+            </div>
+
+        </div>
+
+        <div *ngIf="showEditIcon">
+            <div id="separator"></div>
+            <div class="position-relative">
+                <div class="spacer-134px width-98px dark-gray-bg"></div>
+                <img id="edit-icon" src="assets/edit-icon.svg" alt="edit icon" class="position-absolute">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="spacer-3px"></div>
+    <div *ngIf="requiresLogin"
+         class="position-relative spacer-25px fullWidth sharp-black-bg">
+        <div id="log-in-request"
+             class="position-absolute p-14px yellow colored-text semi-bold italic spaced">
+            Please log in to launch this application
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading || loading === null" class="fullWidth">
+    <div class="p-48px colored-text linear-gradient">Loading...</div>
+    <div id="grid" class="position-relative">
+        <img src="assets/grid.svg" alt="grid">
+        <p-progressSpinner id="spinner" class="position-absolute"></p-progressSpinner>
+    </div>
+</div>
+
+<div class="spacer-40px"></div>

@@ -14,6 +14,9 @@ import {EffectsModule} from '@ngrx/effects'
 import * as fromSolutions from './+state/solutions/solutions.reducer'
 import {SolutionsEffects} from './+state/solutions/solutions.effects'
 import {SolutionsFacade} from './+state/solutions/solutions.facade'
+import {ImagekitioAngularModule} from 'imagekitio-angular'
+import {Imagekit} from '@ezra-clients/common-ui'
+import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 
 @NgModule({
     declarations: [AppComponent],
@@ -26,8 +29,13 @@ import {SolutionsFacade} from './+state/solutions/solutions.facade'
         AddSolutionModule,
         HttpClientModule,
         StoreModule.forRoot(),
+        StoreDevtoolsModule.instrument({ maxAge: 25 }),
         StoreModule.forFeature(fromSolutions.SOLUTIONS_FEATURE_KEY, fromSolutions.solutionsReducer),
-        EffectsModule.forRoot([SolutionsEffects])
+        EffectsModule.forRoot([SolutionsEffects]),
+        ImagekitioAngularModule.forRoot({
+            publicKey: Imagekit.publicKey,
+            urlEndpoint: `${Imagekit.url}solution-portal/`
+        })
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: SlpHttpInterceptor, multi: true},
