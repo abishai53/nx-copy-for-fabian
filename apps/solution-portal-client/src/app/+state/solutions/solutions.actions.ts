@@ -1,14 +1,14 @@
 import {createAction, props} from '@ngrx/store'
-import {SolutionsEntity} from './solutions.models'
+import {SolutionWidget} from './solutions.models'
 
 export const startAddingSolution = createAction(
     '[Add Solution Page] Start Adding Solution',
-    props<{ solution: SolutionsEntity }>()
+    props<{ solution: FormData }>()
 )
 
 export const addSolutionSuccess = createAction(
     '[Add Solution Page] Add Solution Success',
-    props<{ solution: SolutionsEntity }>()
+    props<{ solution: SolutionWidget }>()
 )
 
 export const addSolutionsFailure = createAction(
@@ -18,11 +18,11 @@ export const addSolutionsFailure = createAction(
 
 export const startUpdatingSolution = createAction(
     '[Edit Solution Page] Start Updating Solution',
-    props<{ solution: SolutionsEntity }>()
+    props<{ solution: FormData }>()
 )
 export const updateSolutionSuccess = createAction(
     '[Edit Solution Page] Update Solution Success',
-    props<{ solution: SolutionsEntity }>()
+    props<{ solution: SolutionWidget }>()
 )
 
 export const updateSolutionFailure = createAction(
@@ -51,7 +51,7 @@ export const startInitSolutions = createAction(
 
 export const initSolutionsSuccess = createAction(
     '[Solutions/API] Fetch All Solutions Success',
-    props<{ solutions: SolutionsEntity[] }>()
+    props<{ solutions: SolutionWidget[] }>()
 )
 
 export const initSolutionFailure = createAction(

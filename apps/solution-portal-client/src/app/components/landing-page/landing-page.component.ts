@@ -22,12 +22,13 @@ export class LandingPageComponent implements SlpNavigablePage, OnInit, OnDestroy
     solutionCount = 0
     loggedIn = false
     isAdmin = false
+
     constructor(private readonly solutionsFacade: SolutionsFacade) {}
 
     ngOnInit(): void {
         this.solutionsFacade.solutionCount$.pipe(
             takeUntil(this.destroyed$),
-            map( (count) => this.solutionCount = count)
+            map((count) => this.solutionCount = count)
         ).subscribe()
     }
 

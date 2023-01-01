@@ -1,18 +1,17 @@
 export interface SolutionsEntity {
-  sys_id: string,
+  sys_id?: string,
   url: string,
   label: string,
   sys_name: string,
   description: string,
   index: number,
   image_ext: string,
-  authentication_required: boolean,
-  documentation_ext: string
+  documentation_ext: string,
+  authentication_required: boolean
 }
 
 export function createSolution(solution: Partial<SolutionsEntity>): SolutionsEntity {
     return {
-        sys_id: '',
         url: '',
         label: '',
         sys_name: '',
@@ -23,4 +22,10 @@ export function createSolution(solution: Partial<SolutionsEntity>): SolutionsEnt
         authentication_required: true,
         ...solution
     }
+}
+
+export interface SolutionWidget {
+  solutionDto: SolutionsEntity,
+  coverImage: string,
+  documentation: string
 }

@@ -4,7 +4,7 @@
     <div class="spacer-10px"></div>
     <label for="solution-image" class="block colored-text linear-gradient">Cover Image</label>
 
-    <form [formGroup]="formGroup">
+    <form [formGroup]="formGroup" enctype="multipart/form-data">
         <div class="flex-row">
             <div class="flex-row half-width">
                 <div id="solution-image" class="position-relative">
@@ -27,15 +27,14 @@
                 </div>
             </div>
 
-
             <div class="flex-column p-18px gray-text-on-white-bg">
                 <p-messages id="messages"></p-messages>
-                <div *ngIf="errors.get(addFormErrors.invalidImageExtension)">
+                <div *ngIf="errors.get(addFormErrors.InvalidImageExtension)">
                     <p-message severity="error" text="Invalid Image File! Accepted file types are "></p-message>
                     <div class="spacer-10px"></div>
                     <span *ngFor="let ext of imageExtOptions">{{ext}}  </span>
                 </div>
-                <div *ngIf="errors.get(addFormErrors.invalidFileExtension)">
+                <div *ngIf="errors.get(addFormErrors.InvalidFileExtension)">
                     <p-message severity="error" text="Invalid Document File! Accepted file types are "></p-message>
                     <div class="spacer-10px"></div>
                     <span *ngFor="let ext of docExtOptions">{{ext}}  </span>
@@ -43,7 +42,7 @@
             </div>
 
         </div>
-        <div class="p-24px gray-text-on-white-bg">{{imageFileName}}</div>
+        <div class="p-24px gray-text-on-white-bg">{{coverImage.name}}</div>
         <div class="spacer-40px"></div>
 
         <div id="form-fields" class="flex-row">
@@ -58,8 +57,8 @@
                     />
                 </div>
                 <div class="field">
-                    <label for="sysName" class="block colored-text linear-gradient">System Name</label>
-                    <input id="sysName" pInputText formControlName="sysName"/>
+                    <label for="sysNname" class="block colored-text linear-gradient">System Name</label>
+                    <input id="sysName" pInputText formControlName="sys_name"/>
                 </div>
                 <div class="field">
                     <label for="url" class="block colored-text linear-gradient">URL</label>
@@ -80,7 +79,7 @@
 
             <div class="flex-column">
                 <div class="p-inputgroup field">
-                    <input type="text" formControlName="documentationText" [value]="documentationFileName" pInputText/>
+                    <input type="text" formControlName="documentationText" [value]="documentation.name" pInputText/>
                     <span class="p-inputgroup-addon">
                         <input hidden
                                type="file"

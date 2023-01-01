@@ -1,4 +1,4 @@
-export const documentationExt = [
+export const DocumentationExt = [
     'pdf',
     'docx',
     'doc',
@@ -11,7 +11,7 @@ export const documentationExt = [
     'pptx'
 ]
 
-export const imageExt = [
+export const ImageExt = [
     'jpeg',
     'jpg',
     'png',
@@ -19,3 +19,25 @@ export const imageExt = [
     'raw',
     'eps'
 ]
+
+export const ImageMimeTypes = new Map([
+    ['jpeg', 'image/jpeg'],
+    ['jpg', 'image/jpeg'],
+    ['png', 'image/png'],
+    ['svg', 'image/svg+xml'],
+    ['raw', ''],
+    ['eps', '']
+])
+
+export const DocMimeType = new Map([
+    ['pdf', 'application/pdf'],
+    ['docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    ['doc', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    ['txt', 'text/plain'],
+    ['xls', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+    ['xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+    ['odt', ''],
+    ['ods', ''],
+    ['ppt', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'],
+    ['pptx', 'application/vnd.openxmlformats-officedocument.presentationml.presentation']
+])
