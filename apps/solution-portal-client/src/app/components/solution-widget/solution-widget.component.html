@@ -1,12 +1,12 @@
 <div *ngIf="!loading">
     <div id="solution-image" class="position-relative">
         <img src="assets/grid.svg" alt="grid">
-        <ik-image [path]="coverImageUrl" class="position-absolute img-scale-down"></ik-image>
+        <img [src]="coverImageUrl" class="position-absolute img-scale-down">
     </div>
 
     <div class="position-relative">
         <div class="fullWidth spacer-80px simple-gray-bg"></div>
-        <div id="solution-label" class="position-absolute bold colored-text linear-gradient p-32px">{{solution?.label}}</div>
+        <div id="solution-label" class="position-absolute bold colored-text linear-gradient p-32px">{{_solution.label}}</div>
     </div>
     <div class="spacer-3px"></div>
 
@@ -23,8 +23,11 @@
             <div class="spacer-3px"></div>
 
             <div class="position-relative">
-                <div class="spacer-65px simple-gray-bg" [ngClass]="{'shrunk': showEditIcon, 'fullWidth': !showEditIcon}"></div>
-                <div class="position-absolute widget-button">Detailed Documentation</div>
+                <a [href]="documentation.file" [download]="documentation.name">
+                    <div class="spacer-65px simple-gray-bg" [ngClass]="{'shrunk': showEditIcon, 'fullWidth': !showEditIcon}"></div>
+                    <div class="position-absolute widget-button">Detailed Documentation</div>   
+                </a>
+
             </div>
 
         </div>
@@ -40,7 +43,7 @@
     </div>
 
     <div class="spacer-3px"></div>
-    <div *ngIf="requiresLogin"
+    <div *ngIf="!_isLoggedIn"
          class="position-relative spacer-25px fullWidth sharp-black-bg">
         <div id="log-in-request"
              class="position-absolute p-14px yellow colored-text semi-bold italic spaced">

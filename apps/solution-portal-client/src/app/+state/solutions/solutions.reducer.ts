@@ -2,11 +2,11 @@ import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity'
 import {createReducer, on} from '@ngrx/store'
 
 import * as SolutionsActions from './solutions.actions'
-import {SolutionsEntity} from './solutions.models'
+import {SolutionWidget} from './solutions.models'
 
 export const SOLUTIONS_FEATURE_KEY = 'solutions'
 
-export interface SolutionsState extends EntityState<SolutionsEntity> {
+export interface SolutionsState extends EntityState<SolutionWidget> {
   error: any | null
   status: 'pending' | 'loading' | 'error' | 'success'
 }
@@ -15,8 +15,8 @@ export interface SolutionsPartialState {
   readonly [SOLUTIONS_FEATURE_KEY]: SolutionsState;
 }
 
-export const solutionsAdapter: EntityAdapter<SolutionsEntity> =
-  createEntityAdapter<SolutionsEntity>({selectId: solution => solution.sys_id})
+export const solutionsAdapter: EntityAdapter<SolutionWidget> =
+  createEntityAdapter<SolutionWidget>({selectId: solution => solution.solutionDto.index})
 
 export const initialSolutionsState: SolutionsState =
   solutionsAdapter.getInitialState({
@@ -57,6 +57,6 @@ export const solutionsReducer = createReducer(
         SolutionsActions.updateSolutionFailure,
         SolutionsActions.deleteSolutionFailure,
         SolutionsActions.initSolutionFailure,
-        (state, {error}) => ({...state, status: 'error', error: error})
+        (state, {error}) => ({...state, status: 'error', error})
     )
 )
