@@ -8,8 +8,9 @@ import * as SolutionsActions from '../../+state/solutions/solutions.actions'
 import {distinctUntilChanged, filter, Subject, tap} from 'rxjs'
 import {map, takeUntil} from 'rxjs/operators'
 import {MessageService} from 'primeng/api'
-import {initialFormGroup, maxLen, minLen, AddFormErrors} from './add-solution-helper'
+import {InitialFormGroup, maxLen, minLen, AddFormErrors} from './add-solution-helper'
 import {SolutionService} from '../../services/solution-service'
+import {ActivatedRoute} from '@angular/router'
 
 @Component({
     selector: 'slp-add-solution',
@@ -21,15 +22,14 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit, OnDestroy
     destroyed$ = new Subject<boolean>()
     pageName = SlpNavigation.ADD_SOLUTION
     defaultUrl = 'assets/default-cover-image.svg'
-    successMessage = ''
     errorMessage = ''
-    url: any = ''
+    coverImageUrl: any = ''
     minLen = minLen
     maxLen = maxLen
     imageExtOptions = ImageExt
     docExtOptions = DocumentationExt
     addFormErrors = AddFormErrors
-    formGroup = initialFormGroup
+    formGroup = InitialFormGroup
     coverImage = {file: {} as File, name: ''}
     documentation = {file: {} as File, name: ''}
 
@@ -42,11 +42,14 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit, OnDestroy
         private readonly location: Location,
         private readonly solutionFacade: SolutionsFacade,
         private readonly messageService: MessageService,
-        private readonly solutionService: SolutionService) {}
+        private readonly solutionService: SolutionService,
+        private route: ActivatedRoute) {}
 
     ngOnInit() {
         this.initialize()
         this.formGroup.valueChanges.subscribe(() => this.updateFormErrors())
+        const nextIndex = Number(this.route.snapshot.paramMap.get('index'))
+        this.formGroup.controls.index.setValue(nextIndex)
     }
 
     ngOnDestroy() {
@@ -55,7 +58,7 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit, OnDestroy
     }
 
     initialize = () => {
-        this.url = this.defaultUrl
+        this.coverImageUrl = this.defaultUrl
         this.formGroup.reset()
         this.coverImage = {file: {} as File, name: 'No Image Selected'}
     }
@@ -76,7 +79,7 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit, OnDestroy
             docErrors ? docErrors[AddFormErrors.InvalidFileExtension] === true : false
         )
 
-        this.url = imageErrors ? this.defaultUrl : this.url
+        this.coverImageUrl = imageErrors ? this.defaultUrl : this.coverImageUrl
     }
 
     onImageUpload(event: any): void {
@@ -87,7 +90,7 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit, OnDestroy
             if (!this.errors.get(AddFormErrors.InvalidImageExtension)) {
                 const reader = new FileReader()
                 reader.readAsDataURL(file)
-                reader.onload = (event) => this.url = event.target?.result
+                reader.onload = () => this.coverImageUrl = reader.result
             }
         }
     }
@@ -112,11 +115,7 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit, OnDestroy
 
     registerSolution(): void {
         const solutionFormData: FormData =
-            this.solutionService.createSolutionFormData(
-                this.formGroup,
-                this.coverImage.file,
-                this.documentation.file
-            )
+            this.solutionService.createSolutionFormData(this.formGroup, this.coverImage.file, this.documentation.file)
 
         this.destroyed$.next(true)
         this.messageService.clear()
@@ -132,12 +131,11 @@ export class AddSolutionComponent implements SlpNavigablePage, OnInit, OnDestroy
             map((status) => {
                 const label = this.formGroup.controls.label.value
                 if (status === 'success' && label) {
-                    this.successMessage = `${label} has been saved`
-                    this.messageService.add({severity: 'success', summary: 'Success', detail: this.successMessage})
+                    const successMessage = `${label} has been saved`
+                    this.messageService.add({severity: 'success', summary: 'Success', detail: successMessage})
                     this.initialize()
                 } else if (status === 'error') this.setErrorMessage()
-            })
-        ).subscribe()
+            })).subscribe()
     }
 
     private setErrorMessage() {

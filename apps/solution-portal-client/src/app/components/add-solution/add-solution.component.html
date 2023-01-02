@@ -2,33 +2,25 @@
     <div class="spacer-10px"></div>
     <shr-back-arrow></shr-back-arrow>
     <div class="spacer-10px"></div>
-    <label for="solution-image" class="block colored-text linear-gradient">Cover Image</label>
+    <label class="block colored-text linear-gradient">Cover Image</label>
 
     <form [formGroup]="formGroup" enctype="multipart/form-data">
         <div class="flex-row">
             <div class="flex-row half-width">
-                <div id="solution-image" class="position-relative">
+                <div class="solution-image position-relative">
                     <img src="assets/grid.svg" alt="grid">
-                    <img [src]="url" alt="solution cover image" class="position-absolute img-scale-down">
+                    <img [src]="coverImageUrl" alt="solution cover image" class="position-absolute img-scale-down">
                 </div>
                 <div class="align-bottom">
-                    <input hidden
-                           type="file"
-                           id="img-upload-btn"
-                           formControlName="coverImage"
-                           (change)="onImageUpload($event)"
-                    />
+                    <input hidden type="file" id="img-upload-btn" formControlName="coverImage" (change)="onImageUpload($event)"/>
                     <label for="img-upload-btn" class="clickable">
-                        <img src="assets/upload-icon.svg"
-                             alt="upload icon"
-                             pTooltip="Upload Cover Image"
-                        />
+                        <img src="assets/upload-icon.svg" alt="upload icon" pTooltip="Upload Cover Image"/>
                     </label>
                 </div>
             </div>
 
             <div class="flex-column p-18px gray-text-on-white-bg">
-                <p-messages id="messages"></p-messages>
+                <p-messages></p-messages>
                 <div *ngIf="errors.get(addFormErrors.InvalidImageExtension)">
                     <p-message severity="error" text="Invalid Image File! Accepted file types are "></p-message>
                     <div class="spacer-10px"></div>
@@ -49,12 +41,7 @@
             <div class="flex-column">
                 <div class="field">
                     <label for="label" class="block colored-text linear-gradient">Label</label>
-                    <input id="label"
-                           pInputText
-                           [maxlength]="maxLen['label']"
-                           formControlName="label"
-                           (input)="setSysName($event)"
-                    />
+                    <input id="label" pInputText [maxlength]="maxLen.label" formControlName="label" (input)="setSysName($event)"/>
                 </div>
                 <div class="field">
                     <label for="sysNname" class="block colored-text linear-gradient">System Name</label>
@@ -62,18 +49,11 @@
                 </div>
                 <div class="field">
                     <label for="url" class="block colored-text linear-gradient">URL</label>
-                    <input id="url" pInputText [maxLength]="maxLen['url']" formControlName="url"/>
+                    <input id="url" pInputText [maxLength]="maxLen.url" formControlName="url"/>
                 </div>
                 <div class="field">
                     <label for="index" class="block colored-text linear-gradient">Index</label>
-                    <p-inputNumber id="index"
-                                   pInputText
-                                   [showButtons]="true"
-                                   buttonLayout="horizontal"
-                                   formControlName="index"
-                                   incrementButtonIcon="pi pi-plus"
-                                   decrementButtonIcon="pi pi-minus" >
-                    </p-inputNumber>
+                    <input id="index" pInputText formControlName="index">
                 </div>
             </div>
 
@@ -81,12 +61,7 @@
                 <div class="p-inputgroup field">
                     <input type="text" formControlName="documentationText" [value]="documentation.name" pInputText/>
                     <span class="p-inputgroup-addon">
-                        <input hidden
-                               type="file"
-                               id="file-upload-btn"
-                               formControlName="documentation"
-                               (change)="onFileUpload($event)"
-                        />
+                        <input hidden type="file" id="file-upload-btn" formControlName="documentation" (change)="onFileUpload($event)"/>
                         <label for="file-upload-btn" class="clickable">
                             <img src="assets/upload-icon-white.svg" alt="upload icon">
                         </label>
@@ -100,12 +75,7 @@
 
                 <div class="field">
                     <label for="description" class="block colored-text linear-gradient">Short Description</label>
-                    <textarea id="description"
-                              rows="8"
-                              pInputTextarea
-                              [maxlength]="maxLen['description']"
-                              formControlName="description">
-                    </textarea>
+                    <textarea id="description" rows="8" pInputTextarea [maxlength]="maxLen.description" formControlName="description"></textarea>
                 </div>
             </div>
         </div>

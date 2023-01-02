@@ -1,10 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core'
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core'
 import {SlpNavigablePage} from '../../model/slp-navigable-page'
 import {SlpNavigation} from '../../model/slp-navigation'
 import {ElementSize, TextColor} from '@ezra-clients/common-ui'
 import {SolutionsFacade} from '../../+state/solutions/solutions.facade'
 import {map, takeUntil} from 'rxjs/operators'
 import {Subject} from 'rxjs'
+import {SolutionWidget} from '../../+state/solutions/solutions.models'
 
 @Component({
     selector: 'slp-landing-page',
@@ -22,6 +23,7 @@ export class LandingPageComponent implements SlpNavigablePage, OnInit, OnDestroy
     solutionCount = 0
     loggedIn = false
     isAdmin = false
+    searchText = ''
 
     constructor(private readonly solutionsFacade: SolutionsFacade) {}
 
@@ -35,6 +37,10 @@ export class LandingPageComponent implements SlpNavigablePage, OnInit, OnDestroy
     ngOnDestroy(): void {
         this.destroyed$.next(true)
         this.destroyed$.complete()
+    }
+
+    filterWidgets(a: SolutionWidget, searchText: string): boolean {
+        return a.solutionDto.label.toLowerCase().includes(searchText.toLowerCase())
     }
 
     toggleLoggedIn = () => this.loggedIn = !this.loggedIn
