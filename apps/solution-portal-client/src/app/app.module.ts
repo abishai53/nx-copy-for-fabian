@@ -15,6 +15,7 @@ import * as fromSolutions from './+state/solutions/solutions.reducer'
 import {SolutionsEffects} from './+state/solutions/solutions.effects'
 import {SolutionsFacade} from './+state/solutions/solutions.facade'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
+import {BlockUIModule} from 'ng-block-ui'
 
 @NgModule({
     declarations: [AppComponent],
@@ -29,7 +30,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools'
         StoreModule.forRoot(),
         StoreDevtoolsModule.instrument({maxAge: 25}),
         StoreModule.forFeature(fromSolutions.SOLUTIONS_FEATURE_KEY, fromSolutions.solutionsReducer),
-        EffectsModule.forRoot([SolutionsEffects])
+        EffectsModule.forRoot([SolutionsEffects]),
+        BlockUIModule.forRoot()
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: SlpHttpInterceptor, multi: true},

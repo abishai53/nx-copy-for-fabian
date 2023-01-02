@@ -6,6 +6,6 @@ import {AddSolutionComponent} from './components/add-solution/add-solution.compo
 export const appRoutes: Routes = [
     {path: '', redirectTo: SlpNavigation.LANDING_PAGE, pathMatch: 'full'},
     {path: SlpNavigation.LANDING_PAGE, component: LandingPageComponent},
-    {path: SlpNavigation.ADD_SOLUTION, component: AddSolutionComponent}
+    {path: `${SlpNavigation.ADD_SOLUTION}/:index`, component: AddSolutionComponent}
 ]
 

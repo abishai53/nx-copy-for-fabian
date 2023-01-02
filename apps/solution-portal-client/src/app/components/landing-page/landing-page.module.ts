@@ -6,6 +6,8 @@ import {RouterLink} from '@angular/router'
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common'
 import {SolutionWidgetModule} from '../solution-widget/solution-widget.module'
 import {MessageModule} from 'primeng/message'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {PipesModule} from '../../pipes/pipes.module'
 
 @NgModule({
     declarations: [LandingPageComponent],
@@ -18,7 +20,10 @@ import {MessageModule} from 'primeng/message'
         NgForOf,
         SolutionWidgetModule,
         NgIf,
-        MessageModule
+        MessageModule,
+        FormsModule,
+        ReactiveFormsModule,
+        PipesModule
     ]
 })
 export class LandingPageModule {}

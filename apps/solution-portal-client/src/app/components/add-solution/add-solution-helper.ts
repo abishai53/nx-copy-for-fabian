@@ -25,15 +25,15 @@ export const minLen = {'url': 15, 'label': 5, 'description': 50}
 
 const fb = new FormBuilder()
 
-export const initialFormGroup = fb.nonNullable.group({
-
-    index: [0, [Validators.required]],
+export const InitialFormGroup = fb.nonNullable.group({
 
     auth: [true, [Validators.required]],
 
     coverImage: ['', [Validators.required, validateImage]],
 
     documentation: ['', [Validators.required, validateDocument]],
+
+    index: fb.nonNullable.control({value: 0, disabled: true}, Validators.required),
 
     documentationText: fb.nonNullable.control({value: 'Upload Documentation', disabled: true}),
 
@@ -43,16 +43,17 @@ export const initialFormGroup = fb.nonNullable.group({
         '',
         [
             Validators.required,
-            Validators.maxLength(maxLen['label']),
-            Validators.minLength(minLen['label'])]
+            Validators.maxLength(maxLen.label),
+            Validators.minLength(minLen.label)
+        ]
     ],
 
     url: [
         '',
         [
             Validators.required,
-            Validators.maxLength(maxLen['url']),
-            Validators.minLength(minLen['url'])
+            Validators.maxLength(maxLen.url),
+            Validators.minLength(minLen.url)
         ]
     ],
 
@@ -60,8 +61,8 @@ export const initialFormGroup = fb.nonNullable.group({
         '',
         [
             Validators.required,
-            Validators.maxLength(maxLen['description']),
-            Validators.minLength(minLen['description'])
+            Validators.maxLength(maxLen.description),
+            Validators.minLength(minLen.description)
         ]
     ]
 })

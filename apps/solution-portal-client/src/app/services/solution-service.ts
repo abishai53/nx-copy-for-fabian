@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
-import {Observable} from 'rxjs'
+import {map, Observable} from 'rxjs'
 import {createSolution, SolutionWidget} from '../+state/solutions/solutions.models'
 import {FormGroup} from '@angular/forms'
 import {getExt} from '../components/add-solution/add-solution-helper'
@@ -21,7 +21,9 @@ export class SolutionService {
         this.httpClient.delete<SolutionWidget>(`${this.baseUrl}/${solution.solutionDto.sys_id}`)
 
     fetchAllSolutions = (): Observable<SolutionWidget[]> =>
-        this.httpClient.get<SolutionWidget[]>(this.baseUrl)
+        this.httpClient.get<SolutionWidget[]>(this.baseUrl).pipe(
+            map(widgets => widgets.sort((a, b) => a.solutionDto.index - b.solutionDto.index))
+        )
 
     createSolutionFormData(formGroup: FormGroup, coverImage: File, documentation: File): FormData {
         const imageExt = getExt(coverImage.name)
