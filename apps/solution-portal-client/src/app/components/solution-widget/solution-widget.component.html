@@ -28,12 +28,11 @@
                         <div class="position-absolute widget-button">Detailed Documentation</div>   
                     </a>
                 </div>
-
             </div>
 
             <div *ngIf="showEditIcon">
                 <div id="separator"></div>
-                <div class="position-relative">
+                <div class="position-relative clickable" (click)="openEditForm()">
                     <div class="spacer-134px width-98px dark-gray-bg"></div>
                     <img id="edit-icon" src="assets/edit-icon.svg" alt="edit icon" class="position-absolute">
                 </div>

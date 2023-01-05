@@ -13,7 +13,7 @@
                 </div>
                 <div class="align-bottom">
                     <input hidden type="file" id="img-upload-btn" formControlName="coverImage" (change)="onImageUpload($event)"/>
-                    <label for="img-upload-btn" class="clickable">
+                    <label for="img-upload-btn" class="clickable" (click)="addCoverImageValidators()">
                         <img src="assets/upload-icon.svg" alt="upload icon" pTooltip="Upload Cover Image"/>
                     </label>
                 </div>
@@ -62,7 +62,7 @@
                     <input type="text" formControlName="documentationText" [value]="documentation.name" pInputText/>
                     <span class="p-inputgroup-addon">
                         <input hidden type="file" id="file-upload-btn" formControlName="documentation" (change)="onFileUpload($event)"/>
-                        <label for="file-upload-btn" class="clickable">
+                        <label for="file-upload-btn" class="clickable" (click)="addDocumentationValidators()">
                             <img src="assets/upload-icon-white.svg" alt="upload icon">
                         </label>
                     </span>
@@ -81,12 +81,14 @@
         </div>
 
         <div class="spacer-50px"></div>
-        <shr-forms-buttons (save)="registerSolution()"
+        <shr-forms-buttons (save)="submitSolution()"
                            (cancel)="back()"
+                           (delete)="deleteSolution()"
+                           [disableDelete]="disableDelete"
                            [disableSave]="formGroup.invalid"
-                           [deleteLabel]="'Delete Solution'"
-                           [cancelLabel]="'Go Back'"
-                           [saveLabel]="'Register Solution'"
+                           [deleteLabel]="buttonLabels.delete"
+                           [cancelLabel]="buttonLabels.cancel"
+                           [saveLabel]="buttonLabels.save"
                            [buttonWidth]="320">
         </shr-forms-buttons>
     </form>

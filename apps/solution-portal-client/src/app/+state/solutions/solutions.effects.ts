@@ -15,8 +15,8 @@ export class SolutionsEffects {
             ofType(SolutionsActions.startInitSolutions),
             switchMap(() =>
                 this.solutionService.fetchAllSolutions().pipe(
-                    map((solutions) => SolutionsActions.initSolutionsSuccess({solutions})),
-                    catchError((error) => of(SolutionsActions.initSolutionFailure({error})))
+                    map(solutions => SolutionsActions.initSolutionsSuccess({solutions})),
+                    catchError(error => of(SolutionsActions.initSolutionFailure({error})))
                 )
             )
         )
@@ -25,10 +25,34 @@ export class SolutionsEffects {
     createSolution$ = createEffect(() =>
         this.actions$.pipe(
             ofType(SolutionsActions.startAddingSolution),
-            mergeMap(({solution}) =>
+            switchMap(({solution}) =>
                 this.solutionService.createSolution(solution).pipe(
-                    map((solution) => SolutionsActions.addSolutionSuccess({solution})),
-                    catchError((error) => of(SolutionsActions.addSolutionsFailure({error})))
+                    map(solution => SolutionsActions.addSolutionSuccess({solution})),
+                    catchError(error => of(SolutionsActions.addSolutionsFailure({error})))
+                )
+            )
+        )
+    )
+
+    updateSolution$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(SolutionsActions.startUpdatingSolution),
+            switchMap(({solution}) =>
+                this.solutionService.updateSolution(solution).pipe(
+                    map(solution => SolutionsActions.updateSolutionSuccess({solution})),
+                    catchError(error => of(SolutionsActions.updateSolutionFailure({error})))
+                )
+            )
+        )
+    )
+
+    deleteSolution$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(SolutionsActions.startDeletingSolution),
+            switchMap(({id, index}) =>
+                this.solutionService.deleteSolution(id, index).pipe(
+                    map(index => SolutionsActions.deleteSolutionSuccess({index})),
+                    catchError(error => of(SolutionsActions.deleteSolutionFailure({error})))
                 )
             )
         )

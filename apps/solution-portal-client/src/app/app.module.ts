@@ -6,7 +6,7 @@ import {appRoutes} from './app.routes'
 import {FooterModule} from '@ezra-clients/components'
 import {HeaderModule} from './components/header/header.module'
 import {LandingPageModule} from './components/landing-page/landing-page.module'
-import {AddSolutionModule} from './components/add-solution/add-solution.module'
+import {SolutionFormModule} from './components/add-solution/solution-form.module'
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import {SlpHttpInterceptor} from './services/slp-http-interceptor'
 import {StoreModule} from '@ngrx/store'
@@ -25,7 +25,7 @@ import {BlockUIModule} from 'ng-block-ui'
         FooterModule,
         HeaderModule,
         LandingPageModule,
-        AddSolutionModule,
+        SolutionFormModule,
         HttpClientModule,
         StoreModule.forRoot(),
         StoreDevtoolsModule.instrument({maxAge: 25}),
