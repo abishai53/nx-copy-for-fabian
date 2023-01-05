@@ -32,12 +32,12 @@ export const updateSolutionFailure = createAction(
 
 export const startDeletingSolution = createAction(
     '[Edit Solution Page] Start Deleting Solution',
-    props<{ id: string }>()
+    props<{ id: string, index: number }>()
 )
 
 export const deleteSolutionSuccess = createAction(
     '[Edit Solutions Page] Delete Solution Success',
-    props<{ id: string }>()
+    props<{ index: number }>()
 )
 
 export const deleteSolutionFailure = createAction(

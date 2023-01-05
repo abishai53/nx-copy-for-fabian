@@ -1,7 +1,10 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core'
+import {Component, Input, OnChanges} from '@angular/core'
 import {MimeTypes} from '@ezra-clients/common-ui'
 import {createSolution, SolutionWidget} from '../../+state/solutions/solutions.models'
-import {BlockUI, BlockUIService, NgBlockUI} from 'ng-block-ui'
+import {BlockUIService} from 'ng-block-ui'
+import {SlpNavigation} from '../../model/slp-navigation'
+import {Router} from '@angular/router'
+import {FormMode} from '../../model/solution-form-mode'
 
 @Component({
     selector: 'slp-solution-widget',
@@ -9,13 +12,14 @@ import {BlockUI, BlockUIService, NgBlockUI} from 'ng-block-ui'
     styleUrls: ['solution-widget.component.scss']
 })
 export class SolutionWidgetComponent implements OnChanges {
-    coverImageUrl = ''
+    coverImageUrl? = ''
     documentation = {file: '', name: ''}
     _solution = createSolution({label: ''})
     showEditIcon = false
     showDescription = false
     blockWidget = true
     target = ''
+    pages = SlpNavigation
 
     @Input() loading: boolean | null = true
     @Input() isLoggedIn = false
@@ -30,11 +34,24 @@ export class SolutionWidgetComponent implements OnChanges {
         }
     }
 
-    constructor(private readonly blockUISerive: BlockUIService) {}
+    constructor(private readonly blockUISerive: BlockUIService, private readonly router: Router) {}
 
     ngOnChanges() {
         this.showEditIcon = this.isLoggedIn && this.isAdmin
         this.updateWidgetBlock()
+    }
+
+    openEditForm() {
+        this.router.navigate(
+            [`/${SlpNavigation.SOLUTION_FORM}`],
+            {
+                queryParams: {mode: FormMode.EDIT},
+                state: {
+                    solution: this._solution,
+                    coverImageUrl: this.coverImageUrl,
+                    documentation: this.documentation.file
+                }
+            })
     }
 
     private updateWidgetBlock() {

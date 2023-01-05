@@ -12,9 +12,9 @@ export class FormButtonsComponent {
     @Output() delete = new EventEmitter()
     @Output() cancel = new EventEmitter()
 
-    @Input() hideDelete = true
-    @Input() hideCancel = true
-    @Input() hideSave = true
+    @Input() hideDelete = false
+    @Input() hideCancel = false
+    @Input() hideSave = false
 
     @Input() disableDelete = false
     @Input() disableCancel = false
@@ -30,21 +30,21 @@ export class FormButtonsComponent {
 
     confirmDelete() {
         this.confirmationService.confirm({
-            message: this.deleteLabel + '?',
+            message: `${this.deleteLabel}?`,
             accept: () => this.delete.emit()
         })
     }
 
     confirmCancel() {
         this.confirmationService.confirm({
-            message: this.cancelLabel + '?',
+            message: `${this.cancelLabel}?`,
             accept: () => this.cancel.emit()
         })
     }
 
     confirmSave() {
         this.confirmationService.confirm({
-            message: this.saveLabel + '?',
+            message: `${this.saveLabel}?`,
             accept: () => this.save.emit()
         })
     }

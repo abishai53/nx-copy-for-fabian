@@ -30,7 +30,7 @@ export const solutionsReducer = createReducer(
 
     on(
         SolutionsActions.deleteSolutionSuccess,
-        (state, {id}) => solutionsAdapter.removeOne(id, {...state, status: 'success'})
+        (state, {index}) => solutionsAdapter.removeOne(index, {...state, status: 'success'})
     ),
 
     on(

@@ -1,4 +1,4 @@
 export enum SlpNavigation {
   LANDING_PAGE = 'landing-page',
-  ADD_SOLUTION = 'add-solution'
+  SOLUTION_FORM = 'solution-form'
 }

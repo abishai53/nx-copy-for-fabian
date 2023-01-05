@@ -7,7 +7,7 @@
             class="p-button-warning"
             (click)="confirmDelete()"
             [disabled]="disableDelete"
-            [hidden]="hideDelete"
+            *ngIf="!hideDelete"
             [style.width.px]="buttonWidth">
     </button>
 
@@ -17,7 +17,7 @@
             class="p-button-secondary"
             (click)="confirmCancel()"
             [disabled]="disableCancel"
-            [hidden]="hideCancel"
+            *ngIf="!hideCancel"
             [style.width.px]="buttonWidth">
     </button>
 
@@ -27,7 +27,7 @@
             class="p-button-success"
             (click)="confirmSave()"
             [disabled]="disableSave"
-            [hidden]="hideSave"
+            *ngIf="!hideSave"
             [style.width.px]="buttonWidth">
     </button>
 </div>

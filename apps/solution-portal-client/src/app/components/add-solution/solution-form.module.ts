@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core'
-import {AddSolutionComponent} from './add-solution.component'
+import {SolutionFormComponent} from './solution-form.component'
 import {BackArrowComponent, FormButtonsModule} from '@ezra-clients/components'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {InputTextModule} from 'primeng/inputtext'
@@ -13,8 +13,8 @@ import {MessageModule} from 'primeng/message'
 import {MessagesModule} from 'primeng/messages'
 
 @NgModule({
-    declarations: [AddSolutionComponent],
-    exports: [AddSolutionComponent],
+    declarations: [SolutionFormComponent],
+    exports: [SolutionFormComponent],
     imports: [
         BackArrowComponent,
         BackArrowComponent,
@@ -35,4 +35,4 @@ import {MessagesModule} from 'primeng/messages'
         MessagesModule
     ]
 })
-export class AddSolutionModule {}
+export class SolutionFormModule {}

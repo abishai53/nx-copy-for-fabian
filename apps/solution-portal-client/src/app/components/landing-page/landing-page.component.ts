@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core'
+import {Component, OnDestroy, OnInit} from '@angular/core'
 import {SlpNavigablePage} from '../../model/slp-navigable-page'
 import {SlpNavigation} from '../../model/slp-navigation'
 import {ElementSize, TextColor} from '@ezra-clients/common-ui'

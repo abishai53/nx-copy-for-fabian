@@ -3,6 +3,7 @@ import {FormButtonsComponent} from './form-buttons.component'
 import {ButtonModule} from 'primeng/button'
 import {ConfirmDialogModule} from 'primeng/confirmdialog'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {NgIf} from '@angular/common'
 
 @NgModule({
     declarations: [FormButtonsComponent],
@@ -10,7 +11,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     imports: [
         ButtonModule,
         ConfirmDialogModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        NgIf
     ]
 })
 export class FormButtonsModule {}
