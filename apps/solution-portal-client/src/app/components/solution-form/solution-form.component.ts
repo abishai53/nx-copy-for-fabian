@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core'
 import {SlpNavigablePage} from '../../model/slp-navigable-page'
-import {SlpNavigation} from '../../model/slp-navigation'
 import {Location} from '@angular/common'
 import {DocumentationExt, ImageExt} from '@ezra-clients/common-ui'
 import {SolutionsFacade} from '../../+state/solutions/solutions.facade'
@@ -9,11 +8,12 @@ import {distinctUntilChanged, filter, Subject, tap} from 'rxjs'
 import {map, takeUntil} from 'rxjs/operators'
 import {MessageService} from 'primeng/api'
 import * as SolutionHelpers from './solution-form-helper'
-import {SolutionService} from '../../services/solution-service'
+import {SolutionService} from '../../services/solution.service'
 import {ActivatedRoute} from '@angular/router'
 import {SolutionsEntity} from '../../+state/solutions/solutions.models'
 import {FormMode} from '../../model/solution-form-mode'
 import {Validators} from '@angular/forms'
+import {SlpNavigation} from '../../app-routing.module'
 
 @Component({
     selector: 'slp-solution-form',

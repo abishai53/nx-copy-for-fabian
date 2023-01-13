@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core'
 import {createEffect, Actions, ofType} from '@ngrx/effects'
 import {of} from 'rxjs'
 import {catchError, map, switchMap, mergeMap} from 'rxjs/operators'
-import {SolutionService} from '../../services/solution-service'
+import {SolutionService} from '../../services/solution.service'
 
 import * as SolutionsActions from './solutions.actions'
 

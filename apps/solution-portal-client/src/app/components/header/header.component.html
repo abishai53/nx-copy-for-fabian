@@ -1,10 +1,46 @@
 <div class="standard-padding">
     <div id="top-bar" class="flex-row">
-        <div id="user-identifier">
-            <shr-user-identifier [username]="userName"></shr-user-identifier>
+        <div>
+            <shr-user-identifier [username]="(name$ | async) ?? undefined"></shr-user-identifier>
         </div>
-        <div id="login-button">
-            <shr-button [size]="buttonSize" [text]="'Log In'" [fill]="buttonFill" [textColor]="textColor"></shr-button>
-        </div>
-    </div>
+
+        <ng-template #login>
+            <shr-button [size]="buttonSize.SMALL"
+                        [text]="'Log In'"
+                        [fill]="buttonFill"
+                        [textColor]="textColor"
+                        (click)="signIn()">
+            </shr-button>
+        </ng-template>
+
+        <ng-container *ngIf="loggedIn$ | async; else: login">
+            <shr-button [size]="buttonSize.MEDIUM"
+                        [text]="'My Account'"
+                        [fill]="buttonFill"
+                        [textColor]="textColor"
+                        (click)="accountOptions.toggle($event)">
+            </shr-button>
+        </ng-container>
+    </div> 
+
+    <p-overlayPanel #accountOptions>
+        <ng-template pTemplate>
+            <a [href]="settingsUrl" target="_blank">
+                <shr-button [size]="buttonSize.MEDIUM"
+                    [text]="'Settings'"
+                    [fill]="buttonFill"
+                    [textColor]="textColor">
+                </shr-button>
+            </a>
+
+            <div class="spacer-10px"></div>
+
+            <shr-button [size]="buttonSize.MEDIUM"
+                [text]="'Log Out'"
+                [fill]="buttonFill"
+                [textColor]="textColor"
+                (click)="signOut()">
+            </shr-button>
+        </ng-template>
+    </p-overlayPanel>
 </div>

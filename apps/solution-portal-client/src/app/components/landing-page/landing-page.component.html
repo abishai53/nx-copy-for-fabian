@@ -29,21 +29,17 @@
     </div>
     <div class="spacer-50px"></div>
 
-    <div *ngIf="loggedIn && isAdmin" class="flex-row right-aligned-div bold">
+    <div *ngIf="(loggedIn$ | async) && (isAdmin$ | async)" class="flex-row right-aligned-div bold">
         <shr-button [text]="'+ New Solution'"
                     [size]="buttonSize"
                     [textColor]="buttonTextColor"
                     [routerLink]="['/' + pages.SOLUTION_FORM]"
-                    [queryParams]="{index: solutionCount}">
+                    [queryParams]="{index: (solutionCount$ | async)}">
         </shr-button>
     </div>
     <div class="spacer-40px"></div>
 
-    <button (click)="toggleLoggedIn()" [style.width.px]="100" [style.height.px]="50">Toggle Logged In</button>
-    <div class="spacer-10px"></div>
-    <button (click)="toggleAdmin()" [style.width.px]="100" [style.height.px]="50">Toggle Admin</button>
-
-    <div *ngIf="solutionCount < 1" class="centered-div half-width">
+    <div *ngIf="(solutionCount$ | async)! < 1" class="centered-div half-width">
         <p-message severity="info"
                    text="Sorry, we will upload some applications here soon. Check back later, buddy :)">
         </p-message>
@@ -53,8 +49,8 @@
         <div *ngFor="let solution of ((solutions$ | async) | filter : searchText : filterWidgets)">
             <slp-solution-widget [solution]="solution"
                                  [loading]="solutionsLoading$ | async"
-                                 [isLoggedIn]="loggedIn"
-                                 [isAdmin]="isAdmin">
+                                 [isLoggedIn]="(loggedIn$ | async) ?? false"
+                                 [isAdmin]="(isAdmin$ | async) ?? false">
             </slp-solution-widget>
         </div>
         

@@ -1,59 +1,57 @@
-<div *blockUI="target">
-    <div *ngIf="!loading">
-        <div class="solution-image position-relative">
-            <img src="assets/grid.svg" alt="grid">
-            <img [src]="coverImageUrl" class="position-absolute img-scale-down">    
-        </div>
+<ng-container *ngIf="!loading; else spinner">
+    <div class="solution-image position-relative">
+        <img src="assets/grid.svg" alt="grid">
+        <img [src]="coverImageUrl" class="position-absolute img-scale-down">    
+    </div>
 
-        <div class="position-relative">
-            <div class="fullWidth spacer-80px simple-gray-bg"></div>
-            <div id="solution-label" class="position-absolute bold colored-text linear-gradient p-32px">{{_solution.label}}</div>
-            <div class="spacer-3px"></div>
-        </div>
+    <div class="position-relative">
+        <div class="fullWidth spacer-80px simple-gray-bg"></div>
+        <div id="solution-label" class="position-absolute bold colored-text linear-gradient p-32px">{{_solution.label}}</div>
+        <div class="spacer-3px"></div>
+    </div>
 
-        <div class="flex-row p-24px">
-            <div>
-                <div class="position-relative clickable" (click)="showDescription = true">
-                    <div class="spacer-65px simple-gray-bg" [ngClass]="{'shrunk': showEditIcon, 'fullWidth': !showEditIcon}"></div>
-                    <div class="position-absolute widget-button">
-                        <span>About </span>
-                        <img src="assets/info-icon.svg" alt="info icon">
-                    </div>
-                    <div class="spacer-3px"></div>
+    <div class="flex-row p-24px">
+        <div>
+            <div class="position-relative clickable" (click)="showDescription = true">
+                <div class="spacer-65px simple-gray-bg" [ngClass]="{'shrunk': showEditIcon, 'fullWidth': !showEditIcon}"></div>
+                <div class="position-absolute widget-button">
+                    <span>About </span>
+                    <img src="assets/info-icon.svg" alt="info icon">
                 </div>
-
-                <div class="position-relative">
-                    <a [href]="documentation.file" [download]="documentation.name">
-                        <div class="spacer-65px simple-gray-bg" [ngClass]="{'shrunk': showEditIcon, 'fullWidth': !showEditIcon}" pTooltip="Click to Download"></div>
-                        <div class="position-absolute widget-button">Detailed Documentation</div>   
-                    </a>
-                </div>
+                <div class="spacer-3px"></div>
             </div>
 
-            <div *ngIf="showEditIcon">
-                <div id="separator"></div>
-                <div class="position-relative clickable" (click)="openEditForm()">
-                    <div class="spacer-134px width-98px dark-gray-bg"></div>
-                    <img id="edit-icon" src="assets/edit-icon.svg" alt="edit icon" class="position-absolute">
-                </div>
+            <div class="position-relative">
+                <a [href]="documentation.file" [download]="documentation.name">
+                    <div class="spacer-65px simple-gray-bg" [ngClass]="{'shrunk': showEditIcon, 'fullWidth': !showEditIcon}" pTooltip="Click to Download"></div>
+                    <div class="position-absolute widget-button">Detailed Documentation</div>   
+                </a>
+            </div>
+        </div>
+
+        <div *ngIf="showEditIcon">
+            <div id="separator"></div>
+            <div class="position-relative clickable" (click)="openEditForm()">
+                <div class="spacer-134px width-98px dark-gray-bg"></div>
+                <img id="edit-icon" src="assets/edit-icon.svg" alt="edit icon" class="position-absolute">
             </div>
         </div>
     </div>
-</div>
 
-<div *ngIf="blockWidget" class="position-relative spacer-25px fullWidth sharp-black-bg">
-    <div id="log-in-request" class="position-absolute p-14px yellow colored-text semi-bold italic spaced">
-        Please log in to launch this application
+    <div *ngIf="showLoginWarning" class="position-relative spacer-25px fullWidth sharp-black-bg">
+        <div id="log-in-request" class="position-absolute p-14px yellow colored-text semi-bold italic spaced">
+            This application will prompt you to log in
+        </div>
     </div>
-</div>
+</ng-container>
 
-<div *ngIf="loading || loading === null" class="fullWidth">
+<ng-template #spinner class="fullWidth">
     <div class="p-48px colored-text linear-gradient">Loading...</div>
     <div id="grid" class="position-relative">
         <img src="assets/grid.svg" alt="grid">
         <p-progressSpinner id="spinner" class="position-absolute"></p-progressSpinner>
     </div>
-</div>
+</ng-template>
 
 <div class="spacer-40px"></div>
 

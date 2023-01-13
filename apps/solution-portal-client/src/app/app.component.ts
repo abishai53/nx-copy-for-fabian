@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {SolutionsFacade} from './+state/solutions/solutions.facade'
+import {AuthService} from './services/auth.service'
 
 @Component({
     selector: 'slp-solution-portal-client-root',
@@ -8,7 +9,9 @@ import {SolutionsFacade} from './+state/solutions/solutions.facade'
 })
 export class AppComponent implements OnInit {
     title = 'solution-portal-client'
-    constructor(private readonly solutionsFacade: SolutionsFacade) {}
+    name$ = this.authService.name$
+
+    constructor(private readonly solutionsFacade: SolutionsFacade, private readonly authService: AuthService) {}
 
     ngOnInit() {
         this.solutionsFacade.init()

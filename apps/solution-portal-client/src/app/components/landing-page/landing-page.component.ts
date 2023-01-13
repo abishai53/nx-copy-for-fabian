@@ -1,18 +1,19 @@
-import {Component, OnDestroy, OnInit} from '@angular/core'
+import {Component} from '@angular/core'
 import {SlpNavigablePage} from '../../model/slp-navigable-page'
-import {SlpNavigation} from '../../model/slp-navigation'
 import {ElementSize, TextColor} from '@ezra-clients/common-ui'
 import {SolutionsFacade} from '../../+state/solutions/solutions.facade'
-import {map, takeUntil} from 'rxjs/operators'
 import {Subject} from 'rxjs'
 import {SolutionWidget} from '../../+state/solutions/solutions.models'
+import {SlpNavigation} from '../../app-routing.module'
+import {AuthService} from '../../services/auth.service'
+
 
 @Component({
     selector: 'slp-landing-page',
     templateUrl: 'landing-page.component.html',
     styleUrls: ['landing-page.component.scss']
 })
-export class LandingPageComponent implements SlpNavigablePage, OnInit, OnDestroy {
+export class LandingPageComponent implements SlpNavigablePage {
     pageName = SlpNavigation.LANDING_PAGE
     pages = SlpNavigation
     buttonSize = ElementSize.VERY_LARGE
@@ -20,29 +21,14 @@ export class LandingPageComponent implements SlpNavigablePage, OnInit, OnDestroy
     destroyed$ = new Subject<boolean>()
     solutionsLoading$ = this.solutionsFacade.loading$
     solutions$ = this.solutionsFacade.allSolutions$
-    solutionCount = 0
-    loggedIn = false
-    isAdmin = false
+    solutionCount$ = this.solutionsFacade.solutionCount$
+    isAdmin$ = this.authService.idAdmin$
     searchText = ''
+    loggedIn$ = this.authService.loggedIn$
 
-    constructor(private readonly solutionsFacade: SolutionsFacade) {}
+    constructor(private readonly solutionsFacade: SolutionsFacade, private readonly authService: AuthService) {}
 
-    ngOnInit(): void {
-        this.solutionsFacade.solutionCount$.pipe(
-            takeUntil(this.destroyed$),
-            map((count) => this.solutionCount = count)
-        ).subscribe()
+    filterWidgets(widget: SolutionWidget, searchText: string): boolean {
+        return widget.solutionDto.label.toLowerCase().includes(searchText.toLowerCase())
     }
-
-    ngOnDestroy(): void {
-        this.destroyed$.next(true)
-        this.destroyed$.complete()
-    }
-
-    filterWidgets(a: SolutionWidget, searchText: string): boolean {
-        return a.solutionDto.label.toLowerCase().includes(searchText.toLowerCase())
-    }
-
-    toggleLoggedIn = () => this.loggedIn = !this.loggedIn
-    toggleAdmin = () => this.isAdmin = !this.isAdmin
 }
