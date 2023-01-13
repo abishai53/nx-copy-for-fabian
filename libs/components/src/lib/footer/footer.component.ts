@@ -1,4 +1,4 @@
-import {Component} from '@angular/core'
+import {Component, Input} from '@angular/core'
 
 @Component({
     selector: 'shr-footer',
@@ -7,6 +7,6 @@ import {Component} from '@angular/core'
 })
 export class FooterComponent {
     userEmailAddress = ''
-
+    @Input() username?: string
     sendEmail(): void {}
 }

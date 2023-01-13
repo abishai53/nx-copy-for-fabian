@@ -6,5 +6,9 @@ import {Component, Input} from '@angular/core'
     styleUrls: ['user-identifier.component.scss']
 })
 export class UserIdentifierComponent {
-    @Input() username = 'Ezra Orina'
+    _username = ''
+
+    @Input() set username(userName: string | undefined) {
+        this._username = userName ?? 'User'
+    }
 }

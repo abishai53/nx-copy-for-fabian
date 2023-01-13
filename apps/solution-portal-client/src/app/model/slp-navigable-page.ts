@@ -1,4 +1,4 @@
-import {SlpNavigation} from './slp-navigation'
+import {SlpNavigation} from '../app-routing.module'
 
 export interface SlpNavigablePage {
     pageName: SlpNavigation

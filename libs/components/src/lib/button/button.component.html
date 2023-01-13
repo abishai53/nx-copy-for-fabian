@@ -1,16 +1,12 @@
 <div [ngClass]="
          {
-             'small': size === buttonSize.SMALL,
-             'medium': size === buttonSize.MEDIUM,
-             'large': size === buttonSize.LARGE,
-             'very-large': size  === buttonSize.VERY_LARGE,
              'faded-linear-fill': fill === buttonFill.LINEAR,
              'solid-blue-fill': fill === buttonFill.SOLID,
              'sharp-black-text': textColor === color.BLACK,
              'faint-white-text': textColor === color.WHITE
          }
     "
-     [style.width.px]="size"
+    [style.width.px]="size"
     class="clickable parent position-relative">
     <div class="bold text p-40px position-absolute">{{text}} </div>
 </div>

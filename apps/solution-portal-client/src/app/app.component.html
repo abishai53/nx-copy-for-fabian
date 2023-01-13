@@ -1,7 +1,7 @@
 <div class="entire-page">
 
     <div class="light-black-bg">
-        <slp-header ></slp-header>
+        <slp-header></slp-header>
     </div>
 
     <div class="bright-white-bg">
@@ -9,7 +9,7 @@
     </div>
 
     <div class="light-black-bg">
-        <shr-footer></shr-footer>
+        <shr-footer [username]="(name$ | async) ?? undefined"></shr-footer>
     </div>
 
 </div>

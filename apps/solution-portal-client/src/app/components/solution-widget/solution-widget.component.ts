@@ -1,10 +1,9 @@
 import {Component, Input, OnChanges} from '@angular/core'
 import {MimeTypes} from '@ezra-clients/common-ui'
 import {createSolution, SolutionWidget} from '../../+state/solutions/solutions.models'
-import {BlockUIService} from 'ng-block-ui'
-import {SlpNavigation} from '../../model/slp-navigation'
 import {Router} from '@angular/router'
 import {FormMode} from '../../model/solution-form-mode'
+import {SlpNavigation} from '../../app-routing.module'
 
 @Component({
     selector: 'slp-solution-widget',
@@ -17,7 +16,7 @@ export class SolutionWidgetComponent implements OnChanges {
     _solution = createSolution({label: ''})
     showEditIcon = false
     showDescription = false
-    blockWidget = true
+    showLoginWarning = false
     target = ''
     pages = SlpNavigation
 
@@ -34,11 +33,11 @@ export class SolutionWidgetComponent implements OnChanges {
         }
     }
 
-    constructor(private readonly blockUISerive: BlockUIService, private readonly router: Router) {}
+    constructor(private readonly router: Router) {}
 
     ngOnChanges() {
         this.showEditIcon = this.isLoggedIn && this.isAdmin
-        this.updateWidgetBlock()
+        this.showLoginWarning = this._solution.authentication_required && !this.isLoggedIn
     }
 
     openEditForm() {
@@ -52,17 +51,6 @@ export class SolutionWidgetComponent implements OnChanges {
                     documentation: this.documentation.file
                 }
             })
-    }
-
-    private updateWidgetBlock() {
-        this.target = `solution-${this._solution.index}`
-        if (this._solution.authentication_required && !this.isLoggedIn && !this.loading) {
-            this.blockWidget = true
-            this.blockUISerive.start(this.target)
-        } else {
-            this.blockWidget = false
-            this.blockUISerive.stop(this.target)
-        }
     }
 
     private generateFileUri(ext: string, content: string) {
