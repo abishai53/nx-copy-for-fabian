@@ -4,11 +4,15 @@
         <img [src]="coverImageUrl" alt="cover image" class="position-absolute img-scale-down">
     </div>
 
-    <div class="position-relative">
-        <div class="fullWidth spacer-80px simple-gray-bg"></div>
-        <div id="solution-label" class="position-absolute bold colored-text linear-gradient p-32px">{{_solution.label}}</div>
-        <div class="spacer-3px"></div>
-    </div>
+    <a [href]="_solution.url">
+        <div class="position-relative">
+            <div class="fullWidth spacer-80px simple-gray-bg"></div>
+            <div id="solution-label" class="position-absolute bold colored-text linear-gradient p-32px">
+                {{_solution.label}}
+            </div>
+            <div class="spacer-3px"></div>
+        </div>
+    </a>
 
     <div class="flex-row p-24px">
         <div>

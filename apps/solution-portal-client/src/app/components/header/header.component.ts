@@ -1,7 +1,6 @@
 import {Component} from '@angular/core'
-import {ButtonFill, ElementSize, TextColor} from '@ezra-clients/common-ui'
+import {AuthService, ButtonFill, ElementSize, TextColor} from '@ezra-clients/common-ui'
 import {environment} from '../../../environments/environment'
-import {AuthService} from '../../services/auth.service'
 
 @Component({
     selector: 'slp-header',

@@ -32,10 +32,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/assets/**/*.ts",
-          "libs/assets/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/assets/**/*.ts", "libs/assets/**/*.html"]
       }
     }
   },

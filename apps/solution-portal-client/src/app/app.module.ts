@@ -17,6 +17,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {OktaAuth} from '@okta/okta-auth-js'
 import {environment} from '../environments/environment'
 import {OktaAuthModule, OKTA_CONFIG} from '@okta/okta-angular'
+import {SharedServicesModule} from '@ezra-clients/common-ui'
 
 const oktaAuth = new OktaAuth({
     issuer: `https://${environment.OKTA_DOMAIN}/oauth2/default`,
@@ -35,6 +36,7 @@ const oktaAuth = new OktaAuth({
         SolutionFormModule,
         HttpClientModule,
         OktaAuthModule,
+        SharedServicesModule,
         StoreModule.forRoot(),
         StoreDevtoolsModule.instrument({maxAge: 25}),
         StoreModule.forFeature(fromSolutions.SOLUTIONS_FEATURE_KEY, fromSolutions.solutionsReducer),
