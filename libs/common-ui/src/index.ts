@@ -1,3 +1,5 @@
-export * from './lib/common-ui.module'
 export * from './lib/utility-files/element-config'
 export * from './lib/utility-files/file-extensions'
+export * from './lib/pipes/pipes.module'
+export * from './lib/pipes/filter.pipe'
+export * from './lib/pipes/max.pipe'

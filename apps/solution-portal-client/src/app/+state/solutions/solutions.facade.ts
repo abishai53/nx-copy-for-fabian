@@ -10,6 +10,7 @@ export class SolutionsFacade {
     loading$ = this.store.select(SolutionsSelectors.solutionsAreLoading)
     allSolutions$ = this.store.select(SolutionsSelectors.getAllSolutions)
     solutionCount$ = this.store.select(SolutionsSelectors.getSolutionsCount)
+    solutionIds$ = this.store.select(SolutionsSelectors.getSolutionsIds)
     solutionsError$ = this.store.select(SolutionsSelectors.getSolutionsError)
     solutionStatus$ = this.store.select(SolutionsSelectors.getSolutionsStatus)
     init = () => this.store.dispatch(SolutionsActions.startInitSolutions())
