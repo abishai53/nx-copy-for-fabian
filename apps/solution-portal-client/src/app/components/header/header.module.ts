@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core'
 import {HeaderComponent} from './header.component'
-import {UserIdentifierModule, ButtonModule} from '@ezra-clients/components'
+import {UserIdentifierComponent, ButtonComponent} from '@ezra-clients/components'
 import {AsyncPipe, NgIf} from '@angular/common'
 import {OverlayPanelModule} from 'primeng/overlaypanel'
 
@@ -8,8 +8,8 @@ import {OverlayPanelModule} from 'primeng/overlaypanel'
     declarations: [HeaderComponent],
     exports: [HeaderComponent],
     imports: [
-        UserIdentifierModule,
-        ButtonModule,
+        UserIdentifierComponent,
+        ButtonComponent,
         AsyncPipe,
         NgIf,
         OverlayPanelModule

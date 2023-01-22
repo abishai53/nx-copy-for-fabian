@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core'
-import {RouterModule, Routes} from '@angular/router'
+import {provideRouter, RouterModule, Routes} from '@angular/router'
 import {LandingPageComponent} from './components/landing-page/landing-page.component'
 import {SolutionFormComponent} from './components/solution-form/solution-form.component'
 import {OktaCallbackComponent} from '@okta/okta-angular'
@@ -18,7 +18,7 @@ const appRoutes: Routes = [
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [provideRouter(appRoutes)]
 })
 export class AppRoutingModule {}

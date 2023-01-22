@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 import {AppComponent} from './app.component'
 import {AppRoutingModule} from './app-routing.module'
-import {FooterModule} from '@ezra-clients/components'
+import {FooterComponent} from '@ezra-clients/components'
 import {HeaderModule} from './components/header/header.module'
 import {LandingPageModule} from './components/landing-page/landing-page.module'
 import {SolutionFormModule} from './components/solution-form/solution-form.module'
@@ -29,7 +29,7 @@ const oktaAuth = new OktaAuth({
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FooterModule,
+        FooterComponent,
         HeaderModule,
         LandingPageModule,
         SolutionFormModule,

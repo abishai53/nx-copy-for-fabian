@@ -4,7 +4,6 @@ import {NgClass, NgIf} from '@angular/common'
 import {ProgressSpinnerModule} from 'primeng/progressspinner'
 import {DialogModule} from 'primeng/dialog'
 import {ButtonModule} from 'primeng/button'
-import {BlockUIModule} from 'ng-block-ui'
 
 @NgModule({
     declarations: [SolutionWidgetComponent],
@@ -14,8 +13,7 @@ import {BlockUIModule} from 'ng-block-ui'
         NgIf,
         ProgressSpinnerModule,
         DialogModule,
-        ButtonModule,
-        BlockUIModule
+        ButtonModule
     ]
 })
 export class SolutionWidgetModule {}

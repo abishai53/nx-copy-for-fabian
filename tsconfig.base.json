@@ -22,8 +22,7 @@
     "paths": {
       "@ezra-clients/assets": ["libs/assets/src/index.ts"],
       "@ezra-clients/common-ui": ["libs/common-ui/src/index.ts"],
-      "@ezra-clients/components": ["libs/components/src/index.ts"],
-      "@ezra-clients/services": ["libs/services/src/index.ts"]
+      "@ezra-clients/components": ["libs/components/src/index.ts"]
     },
     "rootDir": "."
   },

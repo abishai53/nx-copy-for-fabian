@@ -3,8 +3,24 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/assets/src",
-  "prefix": "app",
+  "prefix": "shr",
   "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/assets/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/assets/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/assets/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
@@ -16,7 +32,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/assets/**/*.ts", "libs/assets/**/*.html"]
+        "lintFilePatterns": [
+          "libs/assets/**/*.ts",
+          "libs/assets/**/*.html"
+        ]
       }
     }
   },

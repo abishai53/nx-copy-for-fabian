@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core'
 import {SolutionFormComponent} from './solution-form.component'
-import {BackArrowComponent, FormButtonsModule} from '@ezra-clients/components'
+import {BackArrowComponent, FormButtonsComponent} from '@ezra-clients/components'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {InputTextModule} from 'primeng/inputtext'
 import {InputTextareaModule} from 'primeng/inputtextarea'
@@ -17,8 +17,7 @@ import {MessagesModule} from 'primeng/messages'
     exports: [SolutionFormComponent],
     imports: [
         BackArrowComponent,
-        BackArrowComponent,
-        BackArrowComponent,
+        FormButtonsComponent,
         ReactiveFormsModule,
         FormsModule,
         InputTextModule,
@@ -27,7 +26,6 @@ import {MessagesModule} from 'primeng/messages'
         DropdownModule,
         InputSwitchModule,
         TooltipModule,
-        FormButtonsModule,
         NgIf,
         NgForOf,
         MessageModule,

@@ -3,7 +3,7 @@ import {SOLUTIONS_FEATURE_KEY, SolutionsState, solutionsAdapter} from './solutio
 
 export const getSolutionsState = createFeatureSelector<SolutionsState>(SOLUTIONS_FEATURE_KEY)
 
-const {selectAll, selectTotal} = solutionsAdapter.getSelectors()
+const {selectAll, selectTotal, selectIds} = solutionsAdapter.getSelectors()
 
 export const solutionsAreLoading = createSelector(
     getSolutionsState,
@@ -28,4 +28,9 @@ export const getAllSolutions = createSelector(
 export const getSolutionsCount = createSelector(
     getSolutionsState,
     (state: SolutionsState) => selectTotal(state)
+)
+
+export const getSolutionsIds = createSelector(
+    getSolutionsState,
+    (state: SolutionsState) => selectIds(state) as Array<number>
 )

@@ -34,7 +34,7 @@
                     [size]="buttonSize"
                     [textColor]="buttonTextColor"
                     [routerLink]="['/' + pages.SOLUTION_FORM]"
-                    [queryParams]="{index: (solutionCount$ | async)}">
+                    [queryParams]="{index: getNextIndex() | async}">
         </shr-button>
     </div>
     <div class="spacer-40px"></div>

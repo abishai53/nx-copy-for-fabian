@@ -1,11 +1,22 @@
+import {NgIf} from '@angular/common'
 import {Component, EventEmitter, Input, Output} from '@angular/core'
 import {ConfirmationService} from 'primeng/api'
+import {ButtonModule} from 'primeng/button'
+import {ConfirmDialogModule} from 'primeng/confirmdialog'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @Component({
     selector: 'shr-forms-buttons',
     templateUrl: 'form-buttons.component.html',
     styleUrls: ['form-buttons.component.scss'],
-    providers: [ConfirmationService]
+    providers: [ConfirmationService],
+    standalone: true,
+    imports: [
+        ButtonModule,
+        ConfirmDialogModule,
+        BrowserAnimationsModule,
+        NgIf
+    ]
 })
 export class FormButtonsComponent {
     @Output() save = new EventEmitter()

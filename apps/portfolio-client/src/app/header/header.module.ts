@@ -2,7 +2,7 @@ import {NgIf} from '@angular/common'
 import {NgModule} from '@angular/core'
 import {RouterLink} from '@angular/router'
 import {HeaderComponent} from './header.component'
-import {SocialMediaModule, UserIdentifierModule} from '@ezra-clients/components'
+import {SocialMediaComponent, UserIdentifierComponent} from '@ezra-clients/components'
 
 @NgModule({
     declarations: [HeaderComponent],
@@ -10,8 +10,8 @@ import {SocialMediaModule, UserIdentifierModule} from '@ezra-clients/components'
     imports: [
         RouterLink,
         NgIf,
-        SocialMediaModule,
-        UserIdentifierModule
+        SocialMediaComponent,
+        UserIdentifierComponent
     ]
 })
 export class HeaderModule {}
