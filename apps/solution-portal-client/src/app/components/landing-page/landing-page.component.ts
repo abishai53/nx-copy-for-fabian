@@ -1,12 +1,11 @@
 import {Component} from '@angular/core'
 import {SlpNavigablePage} from '../../model/slp-navigable-page'
-import {ElementSize, TextColor} from '@ezra-clients/common-ui'
+import {AuthService, ElementSize, TextColor} from '@ezra-clients/common-ui'
 import {SolutionsFacade} from '../../+state/solutions/solutions.facade'
 import {Subject} from 'rxjs'
 import {map} from 'rxjs/operators'
 import {SolutionWidget} from '../../+state/solutions/solutions.models'
 import {SlpNavigation} from '../../app-routing.module'
-import {AuthService} from '../../services/auth.service'
 
 
 @Component({

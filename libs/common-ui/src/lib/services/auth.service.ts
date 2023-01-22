@@ -2,10 +2,9 @@ import {Inject, Injectable} from '@angular/core'
 import {Router} from '@angular/router'
 import {OktaAuthStateService, OKTA_AUTH} from '@okta/okta-angular'
 import OktaAuth, {AuthState} from '@okta/okta-auth-js'
-import {filter, map, tap} from 'rxjs/operators'
-import {SlpNavigation} from '../app-routing.module'
+import {filter, map} from 'rxjs/operators'
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class AuthService {
     loggedIn$ = this.oktaStateService.authState$.pipe(
         filter((s: AuthState) => Boolean(s)),
@@ -26,7 +25,7 @@ export class AuthService {
         @Inject(OKTA_AUTH) private readonly oktaAuth: OktaAuth) {}
 
     async signIn() : Promise<void> {
-        await this.oktaAuth.signInWithRedirect().then(_ => this.router.navigate([SlpNavigation.LANDING_PAGE]))
+        await this.oktaAuth.signInWithRedirect().then(_ => this.router.navigate(['']))
     }
 
     async signOut(): Promise<void> { await this.oktaAuth.signOut() }
