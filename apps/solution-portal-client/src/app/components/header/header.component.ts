@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {AuthService, ButtonFill, ElementSize, TextColor} from '@ezra-clients/common-ui'
+import {OktaService, ButtonFill, ElementSize, TextColor} from '@ezra-clients/common-ui'
 import {environment} from '../../../environments/environment'
 
 @Component({
@@ -11,12 +11,12 @@ export class HeaderComponent {
     buttonSize = ElementSize
     buttonFill = ButtonFill.LINEAR
     textColor = TextColor.WHITE
-    loggedIn$ = this.authService.loggedIn$
-    name$ = this.authService.name$
+    loggedIn$ = this.oktaService.loggedIn$
+    name$ = this.oktaService.name$
     settingsUrl = `https://${environment.OKTA_DOMAIN}/enduser/settings`
 
-    constructor(private readonly authService: AuthService) {}
+    constructor(private readonly oktaService: OktaService) {}
 
-    signIn() { this.authService.signIn() }
-    signOut() { this.authService.signOut() }
+    signIn() { this.oktaService.signIn() }
+    signOut() { this.oktaService.signOut() }
 }

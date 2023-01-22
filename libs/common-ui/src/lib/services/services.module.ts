@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core'
-import {AuthService} from './auth.service'
+import {LoggedInGuard} from './authguards/loggedin.service'
+import {OktaService} from './okta.service'
 
 @NgModule({
-    providers: [AuthService]
+    providers: [OktaService, LoggedInGuard]
 })
 export class SharedServicesModule {}
