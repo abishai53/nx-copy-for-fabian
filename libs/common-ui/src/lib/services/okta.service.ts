@@ -5,7 +5,7 @@ import OktaAuth, {AuthState} from '@okta/okta-auth-js'
 import {filter, map} from 'rxjs/operators'
 
 @Injectable()
-export class AuthService {
+export class OktaService {
     loggedIn$ = this.oktaStateService.authState$.pipe(
         filter((s: AuthState) => Boolean(s)),
         map((s: AuthState) => s.isAuthenticated ?? false)

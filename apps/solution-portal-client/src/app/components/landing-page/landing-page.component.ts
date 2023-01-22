@@ -1,6 +1,6 @@
 import {Component} from '@angular/core'
 import {SlpNavigablePage} from '../../model/slp-navigable-page'
-import {AuthService, ElementSize, TextColor} from '@ezra-clients/common-ui'
+import {OktaService, ElementSize, TextColor} from '@ezra-clients/common-ui'
 import {SolutionsFacade} from '../../+state/solutions/solutions.facade'
 import {Subject} from 'rxjs'
 import {map} from 'rxjs/operators'
@@ -22,11 +22,11 @@ export class LandingPageComponent implements SlpNavigablePage {
     solutionsLoading$ = this.solutionsFacade.loading$
     solutions$ = this.solutionsFacade.allSolutions$
     solutionCount$ = this.solutionsFacade.solutionCount$
-    isAdmin$ = this.authService.idAdmin$
+    isAdmin$ = this.oktaService.idAdmin$
     searchText = ''
-    loggedIn$ = this.authService.loggedIn$
+    loggedIn$ = this.oktaService.loggedIn$
 
-    constructor(private readonly solutionsFacade: SolutionsFacade, private readonly authService: AuthService) {}
+    constructor(private readonly solutionsFacade: SolutionsFacade, private readonly oktaService: OktaService) {}
 
     filterWidgets(widget: SolutionWidget, searchText: string): boolean {
         return widget.solutionDto.label.toLowerCase().includes(searchText.toLowerCase())

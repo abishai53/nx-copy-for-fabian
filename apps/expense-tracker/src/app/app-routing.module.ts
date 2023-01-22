@@ -1,23 +1,14 @@
-import {provideRouter, Routes, RouterModule, Router} from '@angular/router'
-import {inject, NgModule} from '@angular/core'
+import {provideRouter, Routes, RouterModule} from '@angular/router'
+import {NgModule} from '@angular/core'
 import {OktaCallbackComponent} from '@okta/okta-angular'
 import {NxWelcomeComponent} from './nx-welcome.component'
-import {AuthService} from '@ezra-clients/common-ui'
-import {firstValueFrom} from 'rxjs'
 import {LoginComponent} from './login.component'
-
-async function authGuard() {
-    const authService = inject(AuthService)
-    const router = inject(Router)
-    const isLoggedIn = await firstValueFrom(authService.loggedIn$).then(next => next)
-    if (isLoggedIn) return isLoggedIn
-    return router.parseUrl('/login')
-}
+import {LoggedInGuard} from '@ezra-clients/common-ui'
 
 export const appRoutes: Routes = [
-    {path: '', component: NxWelcomeComponent, pathMatch: 'full', canActivate: [authGuard]},
     {path: 'login', component: LoginComponent},
-    {path: 'login/callback', component: OktaCallbackComponent}
+    {path: 'login/callback', component: OktaCallbackComponent},
+    {path: '**', component: NxWelcomeComponent, canActivate: [LoggedInGuard]}
 ]
 
 @NgModule({
