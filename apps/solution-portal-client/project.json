@@ -1,0 +1,107 @@
+{
+  "name": "solution-portal-client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/solution-portal-client/src",
+  "prefix": "slp",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/common-ui/src/lib/styles"]
+        },
+        "outputPath": "dist/apps/solution-portal-client",
+        "index": "apps/solution-portal-client/src/index.html",
+        "main": "apps/solution-portal-client/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/solution-portal-client/tsconfig.app.json",
+        "assets": [
+          "apps/solution-portal-client/src/favicon.ico",
+          "apps/solution-portal-client/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./libs/assets/src/lib/assets",
+            "output": "/assets/"
+          }
+        ],
+        "styles": [
+          "apps/solution-portal-client/src/styles.scss",
+          "node_modules/primeicons/primeicons.css",
+          "node_modules/primeng/resources/themes/vela-blue/theme.css",
+          "node_modules/primeng/resources/primeng.min.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/solution-portal-client/src/environments/environment.ts",
+              "with": "apps/solution-portal-client/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "solution-portal-client:build:production"
+        },
+        "development": {
+          "browserTarget": "solution-portal-client:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "solution-portal-client:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/solution-portal-client/**/*.ts",
+          "apps/solution-portal-client/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/solution-portal-client/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

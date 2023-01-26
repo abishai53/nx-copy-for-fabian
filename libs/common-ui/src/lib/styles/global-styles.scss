@@ -1,0 +1,91 @@
+@use "sass:string";
+@import "colors";
+
+* {box-sizing: border-box}
+
+$font-sizes: 14px, 16px, 18px, 20px, 24px, 32px, 40px, 48px, 72px;
+@each $size in $font-sizes {
+  .p-#{$size} {
+    font-size: $size
+  }
+}
+
+$heights: 3px, 10px, 20px, 25px, 40px, 50px, 65px, 80px, 134px;
+@each $height in $heights {
+  .spacer-#{$height} {
+    height: $height
+  }
+}
+
+html {font-family: 'Plus Jakarta Sans', sans-serif}
+p {margin: inherit}
+.bold {font-weight: 700}
+.semi-bold {font-weight: 400}
+.italic {font-style: italic}
+.spaced {letter-spacing: 0.05em}
+.dark-gray-bg {background: $grayDark}
+.simple-gray-bg {background: $graySimple}
+.sharp-black-bg {background: $sharpBlack}
+.light-black-bg {background: $lightBlack}
+.faint-white-bg {background: $faintWhite}
+.bright-white-bg {background: $brightWhite}
+.linear-gradient {background: linear-gradient(90deg, $linearLeft 0%, $linearRight 70%)}
+.yellow {background: $yellow}
+.sharp-black-text {color: $sharpBlack}
+.light-black-text {color: $lightBlack}
+.faint-white-text {color: $faintWhite}
+.gray-text-on-black-bg {color: $grayOnBlack}
+.gray-text-on-white-bg {color: $grayOnWhite}
+.centered-text {text-align: center}
+.left-aligned-text {text-align: left}
+.centered-div {margin: auto}
+.standard-padding {padding: 0 120px}
+.solid-blue-fill {background: $linearLeft}
+.linear-fill {background: linear-gradient(90deg,$linearLeft 0%, $linearRight 70%)}
+.faded-linear-fill {background: linear-gradient(90deg, $fadedLinearLeft 0%, $fadedLinearRight 100%);}
+.clickable {cursor: pointer}
+.align-bottom {align-self: end}
+.position-relative {position: relative}
+.block {display: block}
+.position-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.entire-page {
+  position: absolute;
+  top: 0;
+  left: calc((100% - 1440px)/2);
+  width: 1440px;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.colored-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+}
+.horizontal-line {
+  height: 1px;
+  width: 100%;
+}
+.img-scale-down {
+  top: 1%;
+  left: 1%;
+  width: 98%;
+  height: 98%;
+  object-fit: scale-down;
+  overflow: hidden;
+}
