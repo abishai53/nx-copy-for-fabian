@@ -1,0 +1,97 @@
+<div class="standard-padding p-24px">
+    <div class="spacer-10px"></div>
+    <shr-back-arrow></shr-back-arrow>
+    <div class="spacer-10px"></div>
+    <label class="block colored-text linear-gradient">Cover Image</label>
+
+    <form [formGroup]="formGroup" enctype="multipart/form-data">
+        <div class="flex-row">
+            <div class="flex-row half-width">
+                <div class="solution-image position-relative">
+                    <img src="assets/grid.svg" alt="grid">
+                    <img [src]="coverImageUrl" alt="solution cover image" class="position-absolute img-scale-down">
+                </div>
+                <div class="align-bottom">
+                    <input hidden type="file" id="img-upload-btn" formControlName="coverImage" (change)="onImageUpload($event)"/>
+                    <label for="img-upload-btn" class="clickable" (click)="addCoverImageValidators()">
+                        <img src="assets/upload-icon.svg" alt="upload icon" pTooltip="Upload Cover Image"/>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex-column p-18px gray-text-on-white-bg">
+                <p-messages></p-messages>
+                <div *ngIf="errors.get(addFormErrors.InvalidImageExtension)">
+                    <p-message severity="error" text="Invalid Image File! Accepted file types are "></p-message>
+                    <div class="spacer-10px"></div>
+                    <span *ngFor="let ext of imageExtOptions">{{ext}}  </span>
+                </div>
+                <div *ngIf="errors.get(addFormErrors.InvalidFileExtension)">
+                    <p-message severity="error" text="Invalid Document File! Accepted file types are "></p-message>
+                    <div class="spacer-10px"></div>
+                    <span *ngFor="let ext of docExtOptions">{{ext}}  </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="p-24px gray-text-on-white-bg">{{coverImage.name}}</div>
+        <div class="spacer-40px"></div>
+
+        <div id="form-fields" class="flex-row">
+            <div class="flex-column">
+                <div class="field">
+                    <label for="label" class="block colored-text linear-gradient">Label</label>
+                    <input id="label" pInputText [maxlength]="maxLen.label" formControlName="label" (input)="setSysName($event)"/>
+                </div>
+                <div class="field">
+                    <label for="sysNname" class="block colored-text linear-gradient">System Name</label>
+                    <input id="sysName" pInputText formControlName="sys_name"/>
+                </div>
+                <div class="field">
+                    <label for="url" class="block colored-text linear-gradient">URL</label>
+                    <input id="url" pInputText [maxLength]="maxLen.url" formControlName="url"/>
+                </div>
+                <div class="field">
+                    <label for="index" class="block colored-text linear-gradient">Index</label>
+                    <input id="index" pInputText formControlName="index">
+                </div>
+            </div>
+
+            <div class="flex-column">
+                <div class="p-inputgroup field">
+                    <input type="text" formControlName="documentationText" [value]="documentation.name" pInputText/>
+                    <span class="p-inputgroup-addon">
+                        <input hidden type="file" id="file-upload-btn" formControlName="documentation" (change)="onFileUpload($event)"/>
+                        <label for="file-upload-btn" class="clickable" (click)="addDocumentationValidators()">
+                            <img src="assets/upload-icon-white.svg" alt="upload icon">
+                        </label>
+                    </span>
+                </div>
+
+                <div class="field">
+                    <label for="auth" class="block colored-text linear-gradient">Requires Authentication</label>
+                    <p-inputSwitch id="auth" formControlName="auth"></p-inputSwitch>
+                </div>
+
+                <div class="field">
+                    <label for="description" class="block colored-text linear-gradient">Short Description</label>
+                    <textarea id="description" rows="8" pInputTextarea [maxlength]="maxLen.description" formControlName="description"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer-50px"></div>
+        <shr-forms-buttons (save)="submitSolution()"
+                           (cancel)="back()"
+                           (delete)="deleteSolution()"
+                           [disableDelete]="disableDelete"
+                           [disableSave]="formGroup.invalid"
+                           [deleteLabel]="buttonLabels.delete"
+                           [cancelLabel]="buttonLabels.cancel"
+                           [saveLabel]="buttonLabels.save"
+                           [buttonWidth]="320">
+        </shr-forms-buttons>
+    </form>
+
+    <div class="spacer-50px"></div>
+</div>

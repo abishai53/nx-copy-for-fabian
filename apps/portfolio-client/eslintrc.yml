@@ -1,0 +1,17 @@
+---
+extends:
+  - "../../.eslintrc.yml"
+overrides:
+  - files:
+      - "*.ts"
+    rules:
+      "@angular-eslint/directive-selector":
+        - error
+        - type: attribute
+          prefix: ptf
+          style: camelCase
+      "@angular-eslint/component-selector":
+        - error
+        - type: element
+          prefix: ptf
+          style: kebab-case

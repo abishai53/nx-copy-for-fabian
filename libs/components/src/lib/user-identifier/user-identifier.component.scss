@@ -1,0 +1,18 @@
+#user-identifier {
+  min-width: 160px;
+  gap: 8px;
+  justify-content: left;
+}
+#profile-icon {
+  align-self: center;
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+#first-initial {
+  position: absolute;
+  top: 8px;
+  left: 35%;
+  height: 20px;
+}
+#username {line-height: 40px}

@@ -1,0 +1,33 @@
+<div class="standard-padding">
+
+    <div id="top-bar">
+        <div id="top-bar-content" class="flex-row bold faint-white-text">
+
+            <div id="user-identifier">
+                <shr-user-identifier [username]="userName"></shr-user-identifier>
+            </div>
+
+            <div id="navigation-section" class="flex-row p-16px">
+                <a [routerLink]=pages.HOME>{{pages.HOME}}</a>
+                <a [routerLink]=pages.ABOUT>{{pages.ABOUT}}</a>
+                <a [routerLink]=pages.BLOG>{{pages.BLOG}}</a>
+                <a href="http://localhost:3200" target="_blank">{{pages.PROJECTS}}</a>
+            </div>
+
+            <div>
+                <shr-social-media-icons></shr-social-media-icons>
+            </div>
+        </div>
+    </div>
+
+    <div id="lower-top-bar">
+        <div id="lower-top-bar-content">
+            <div class="p-48px faint-white-text">{{currentPage}}</div>
+
+            <div *ngIf="currentPage === pages.BLOG">
+
+            </div>
+        </div>
+    </div>
+
+</div>

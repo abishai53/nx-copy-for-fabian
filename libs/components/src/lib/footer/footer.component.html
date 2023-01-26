@@ -1,0 +1,66 @@
+<div class="standard-padding">
+
+    <div class="spacer-50px"></div>
+
+    <div class="flex-row">
+        <div class="p-48px bold faint-white-text">
+            <p>Working on Something Awesome?</p>
+            <p class="colored-text linear-gradient">Let's Create Together!</p>
+        </div>
+
+        <div id="email-address-container">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                    <img src="assets/envelope.svg" alt="envelope svg">
+                </span>
+                <input placeholder="Your email address" type="text" [(ngModel)]="userEmailAddress" pInputText>
+                <span class="p-inputgroup-addon">
+                    <img src="assets/arrow-right-white.svg"
+                         alt="arrow right svg"
+                         class="clickable"
+                         (click)="sendEmail()">
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer-50px"></div>
+
+    <div class="flex-row">
+        <div id="quote">
+            <div id="user-identifier">
+                <shr-user-identifier [username]="username"></shr-user-identifier>
+            </div>
+            <div class="spacer-10px"></div>
+
+            <div class="p-18px gray-text-on-black-bg">
+                <p>From gradle to grave, we toil. Perpetual life</p>
+                <p>pressure makes us forget that the real endgame</p>
+                <p>is the happiness of our families and that </p>
+                <p>of our posterity.</p>
+            </div>
+        </div>
+
+        <div class="p-18px">
+            <p class="faint-white-text ">Work Inquiries</p>
+            <div class="spacer-10px"></div>
+            <p class="gray-text-on-black-bg">Interested in working with me?</p>
+            <p class="gray-text-on-black-bg">Email:
+                <a class="faint-white-text" href="mailto:ezra.orina@uj.edu">ezra.orina@uj.edu</a>
+            </p>
+        </div>
+
+        <div>
+            <p class="faint-white-text ">Follow Me</p>
+            <div class="spacer-10px"></div>
+            <shr-social-media-icons></shr-social-media-icons>
+        </div>
+    </div>
+
+    <div class="spacer-50px"></div>
+    <div class="flex-row p-16px gray-text-on-white-bg">
+        <div>&copy; 2022. Developed By Ezra Orina</div>
+        <div>All rights reserved</div>
+    </div>
+    <div class="spacer-50px"></div>
+</div>
