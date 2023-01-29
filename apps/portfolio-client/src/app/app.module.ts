@@ -2,7 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { BlogComponent } from './blog/blog.component';
-import { FooterComponent } from '@ezra-clients/components2';
+import { FooterComponent } from '@ezra-clients/components';
 import { BrowserModule } from '@angular/platform-browser';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';

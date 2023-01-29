@@ -1,4 +1,4 @@
-export * from './lib/components2.module';
+export * from './lib/components.module';
 export * from './lib/button/button.component';
 export * from './lib/back-arrow/back-arrow.component';
 export * from './lib/footer/footer.component';

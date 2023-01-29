@@ -1,7 +1,7 @@
 import {
   UserIdentifierComponent,
   SocialMediaComponent,
-} from '@ezra-clients/components2';
+} from '@ezra-clients/components';
 import { NgIf } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterLink } from '@angular/router';
