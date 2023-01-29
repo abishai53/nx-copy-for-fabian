@@ -31,8 +31,7 @@
           "apps/expense-tracker/src/styles.scss",
           "apps/solution-portal-client/src/styles.scss",
           "node_modules/primeicons/primeicons.css",
-          "node_modules/primeng/resources/themes/vela-blue/theme.css"
-        ],
+          "node_modules/primeng/resources/themes/vela-blue/theme.css"],
         "scripts": []
       },
       "configurations": {
