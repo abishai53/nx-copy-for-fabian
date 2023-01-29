@@ -3,7 +3,6 @@
   "projects": {
     "assets": "libs/assets",
     "common-ui": "libs/common-ui",
-    "components": "libs/components",
     "components2": "libs/components2",
     "expense-tracker": "apps/expense-tracker",
     "expense-tracker-e2e": "apps/expense-tracker-e2e",
