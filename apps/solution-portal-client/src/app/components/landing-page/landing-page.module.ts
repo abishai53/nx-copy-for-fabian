@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core'
 import {LandingPageComponent} from './landing-page.component'
 import {InputTextModule} from 'primeng/inputtext'
+import {ButtonComponent} from '@ezra-clients/components'
 import {RouterLink} from '@angular/router'
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common'
 import {SolutionWidgetModule} from '../solution-widget/solution-widget.module'
@@ -13,6 +14,7 @@ import {PipesModule} from '@ezra-clients/common-ui'
     exports: [LandingPageComponent],
     imports: [
         InputTextModule,
+        ButtonComponent,
         RouterLink,
         AsyncPipe,
         NgForOf,
